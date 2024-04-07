@@ -106,19 +106,19 @@ JAVA_21 + springboot_3.2.4 + mybatis_3.5.16 + redis_7.0.9 + rabbitmq_3.11.10 + E
 #### 部署内容
 Linux:
     docker部署:
-        1. nacos_v2.1.0 配置中心
-        2. redis_v7.0.9 缓存数据库
-        3. harbor_v1.10.10 私有镜像仓库
-        4. nginx_v1.23.3 转发代理
-        5. apisix_v3.0.0-alpine 网关
-        6. elasticsearch_v7.17.3 搜索和分析引擎,logstash_v7.17.3 服务器端数据处理管道,kibana_v7.17.3 数据可视化
-        7. rabbitmq_v3.11.10 消息队列
-        8. kafka_2.8.1 分布式事件流平台
-        9. zookeeper_3.8.1 集中式服务
+            1. nacos_v2.1.0 配置中心
+            2. redis_v7.0.9 缓存数据库
+            3. harbor_v1.10.10 私有镜像仓库
+            4. nginx_v1.23.3 转发代理
+            5. apisix_v3.0.0-alpine 网关
+            6. elasticsearch_v7.17.3 搜索和分析引擎,logstash_v7.17.3 服务器端数据处理管道,kibana_v7.17.3 数据可视化
+            7. rabbitmq_v3.11.10 消息队列
+            8. kafka_2.8.1 分布式事件流平台
+            9. zookeeper_3.8.1 集中式服务
     普通部署:
-        10. Flink_v1.17.1 分布式处理框架
+            10. Flink_v1.17.1 分布式处理框架
 Windows:
-        11. minio对象存储桶
+            11. minio对象存储桶
 
 #### 说明
 供小白TinkerPlay!
