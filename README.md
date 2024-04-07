@@ -117,7 +117,7 @@ Linux:
         9. zookeeper_3.8.1 集中式服务
     普通部署:
         10. Flink_v1.17.1 分布式处理框架
-windows:
+Windows:
         11. minio对象存储桶
 
 #### 说明
