@@ -347,3 +347,5 @@ docker run -d -p 8848:8848 -p 9848:9848  \
 JAVA启动参数(解决JDK版本不一致导致的Unable to make field private static final long java.util.Properties.serialVersionUID accessible: module java.base does not "opens java.util" to unnamed module @64f6106c): --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED
 
 docker image inspect rabbitmq:latest | grep -i version
+
+本地jar包启动调试: java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 TinkerPlay-0.0.1-SNAPSHOT.jar
