@@ -113,8 +113,8 @@ Linux:
             5. apisix_v3.0.0-alpine 网关
             6. elasticsearch_v7.17.3 搜索和分析引擎,logstash_v7.17.3 服务器端数据处理管道,kibana_v7.17.3 数据可视化
             7. rabbitmq_v3.11.10 消息队列
-            8. kafka_2.8.1 分布式事件流平台
-            9. zookeeper_3.8.1 集中式服务
+            8. kafka_v2.8.1 分布式事件流平台
+            9. zookeeper_v3.8.1 集中式服务
     普通部署:
             10. Flink_v1.17.1 分布式处理框架
 Windows:
