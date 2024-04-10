@@ -116,7 +116,7 @@ Linux:
             8. kafka_v2.8.1 分布式事件流平台
             9. zookeeper_v3.8.1 集中式服务
     普通部署:
-            10. Flink_v1.17.1 分布式处理框架
+            10. Flink_v1.17.0 分布式处理框架
 Windows:
             11. minio对象存储桶
 
