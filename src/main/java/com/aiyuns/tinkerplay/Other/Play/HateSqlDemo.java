@@ -64,6 +64,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.lang.Thread;
 
 // import static sqlUtil.HateSqlController.svnPaths;
 
@@ -131,7 +132,7 @@ public class HateSqlDemo {
                 inputStream.close();
             }
             if (true) {
-                new Thread(() -> {
+                Thread virtualThread = Thread.startVirtualThread(() -> {
                     while (true) {
                         if (threadComletedOne && threadComletedTwo) {
                             System.out.println();
@@ -143,7 +144,7 @@ public class HateSqlDemo {
                             System.out.println(" SVN提交完成! ");
                         }
                     }
-                }).start();
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -203,12 +204,12 @@ public class HateSqlDemo {
                     return;
                 }
             }
-            new Thread(() -> {
+            Thread virtualThreadOne = Thread.startVirtualThread(() -> {
                 writeExcelTwo();
-            }).start();
-            new Thread(() -> {
+            });
+            Thread virtualThreadTwo = Thread.startVirtualThread(() -> {
                 writeExcelOne();
-            }).start();
+            });
         }
         long endTime = System.currentTimeMillis();
         System.out.println();
@@ -649,7 +650,6 @@ public class HateSqlDemo {
     private static boolean isCommentOrBlankLine(String line){
         Pattern pattern = Pattern.compile("^\\s*--");
         Matcher matcher = pattern.matcher(line);
-        Pattern pattern1 = Pattern.compile("^\\s*$");
         Matcher matcher1 = pattern.matcher(line);
         return matcher.find() || matcher1.matches() || StringUtils.isBlank(line);
     }
