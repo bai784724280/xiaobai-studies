@@ -176,7 +176,7 @@ public class HateSqlDemo {
             }
             readSql(ff,sqlMap);
             analyzeSql(sqlMap);
-            if (HateSqlDemo.warnSql.containsValue(true) || !DB.errorInfo.isEmpty()) {
+            if (HateSqlDemo.warnSql.containsValue(true) || !DB2.errorInfo.isEmpty()) {
                 return;
             }
             try{
@@ -191,7 +191,7 @@ public class HateSqlDemo {
                 e.printStackTrace();
             }
         }
-        if (!DB.writeResault.isEmpty() && !HateSqlDemo.analyzeSqlResult.isEmpty()) {
+        if (!DB2.writeResault.isEmpty() && !HateSqlDemo.analyzeSqlResult.isEmpty()) {
             long time = System.currentTimeMillis();
             while (true) {
                 if (System.currentTimeMillis() - time < 60000) {
@@ -199,7 +199,7 @@ public class HateSqlDemo {
                         break;
                     }
                 } else if (System.currentTimeMillis() - time > 60000){
-                    DB.errorInfo.put("SVN更新超时!!", "SQL执行成功! 但未写入Excel! 请手动填补!");
+                    DB2.errorInfo.put("SVN更新超时!!", "SQL执行成功! 但未写入Excel! 请手动填补!");
                     return;
                 }
             }
@@ -215,10 +215,10 @@ public class HateSqlDemo {
         System.out.println("============================程序执行耗时===========================");
         System.out.println("程序执行耗时: " + (endTime-startTime)/1000 + "秒");
         System.out.println("=================================================================");
-        if (DB.errorInfo != null && DB.errorInfo.size() > 0) {
+        if (DB2.errorInfo != null && DB2.errorInfo.size() > 0) {
             System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<打印有问题的文件>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            for (String key : DB.errorInfo.keySet()){
-                System.out.println(key + " --> " + DB.errorInfo.get(key));
+            for (String key : DB2.errorInfo.keySet()){
+                System.out.println(key + " --> " + DB2.errorInfo.get(key));
             }
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
         }
@@ -418,7 +418,7 @@ public class HateSqlDemo {
                             stringBuilder.append(" 的数据. ");
                         } else {
                             stringBuilder.append("无. ");
-                            DB.errorInfo.put(sql, "DELETE语句无WHERE条件! 危险!!!");
+                            DB2.errorInfo.put(sql, "DELETE语句无WHERE条件! 危险!!!");
                         }
                         if (!HateSqlDemo.warnSql.containsKey(sql)) {
                             HateSqlDemo.warnSql.put(sql, true);
@@ -458,7 +458,7 @@ public class HateSqlDemo {
                     if ((sql.startsWith("CREATE INDEX") || sql.startsWith("create index")) && e.toString().contains("net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: \"USING\" \"USING\"")) {
                         stringBuilder.append("新建索引");
                     } else {
-                        DB.errorInfo.put(key + " --> " + sql, " 当前sql语句格式化错误,请检查语句!!!");
+                        DB2.errorInfo.put(key + " --> " + sql, " 当前sql语句格式化错误,请检查语句!!!");
                     }
                     e.printStackTrace();
                 }
@@ -496,7 +496,7 @@ public class HateSqlDemo {
                 arrayList.add("首行");
                 HateSql.excel.put("表头",arrayList);
             }
-            for (String filePath : DB.writeResault){
+            for (String filePath : DB2.writeResault){
                 int rowIndex = 0;
                 for (String key : HateSql.excel.keySet()){
                     rowIndex += HateSql.excel.get(key).size();
@@ -528,7 +528,7 @@ public class HateSqlDemo {
                     e.printStackTrace();
                 }
             }).start();
-            DB.writeResault.clear();
+            DB2.writeResault.clear();
             threadComletedOne = true;
             System.out.println("写入: 脚本更新记录 Excel表 完成! 耗时: " + (System.currentTimeMillis() - startTime) + " ms");
         } catch (FileNotFoundException e) {
