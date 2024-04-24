@@ -648,9 +648,10 @@ public class HateSqlDemo {
 
     private static boolean isCommentOrBlankLine(String line){
         Pattern pattern = Pattern.compile("^\\s*--");
+        Pattern pattern1 = Pattern.compile("^\\s*$");
         Matcher matcher = pattern.matcher(line);
-        Matcher matcher1 = pattern.matcher(line);
-        return matcher.find() || matcher1.matches() || StringUtils.isBlank(line);
+        Matcher matcher1 = pattern1.matcher(line);
+        return StringUtils.isBlank(line) || matcher.find() || matcher1.matches();
     }
 
     private static synchronized void writeWorkbook (Workbook workbook) {
