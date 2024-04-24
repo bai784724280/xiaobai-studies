@@ -181,10 +181,11 @@ public class HateSqlDemo {
             try{
                 for (int i=0; i < environments.length; i++) {
                     DB2 db = new DB2(environments[i], sqlMap);
+                    Thread thread = Thread.ofVirtual().start(db);
                     ++threadNum;
-                    db.setName(threadNum + "-" + environments[i] + "环境");
-                    db.start();
-                    db.join();
+                    thread.setName(threadNum + "-" + environments[i] + "环境");
+                    thread.start();
+                    thread.join();
                 }
             } catch (Exception e){
                 e.printStackTrace();
@@ -677,7 +678,7 @@ public class HateSqlDemo {
 }
 
 // 数据库
-class DB2 extends Thread {
+class DB2 implements Runnable {
 
     public static LinkedHashMap<String, String> errorInfo = new LinkedHashMap<>();
     protected static HashSet<String> writeResault = new HashSet<>();
@@ -746,13 +747,13 @@ class DB2 extends Thread {
                     connection.commit();
                     writeResault.add(key);
                     HateSqlDemo.svnPaths.put(key, false);
-                    System.out.println(this.getName() + " --> 子线程 <" + key + "> 文件执行成功! 耗时: " + (System.currentTimeMillis() - startTime) + " ms");
+                    System.out.println(Thread.currentThread().getName() + " --> 子线程 <" + key + "> 文件执行成功! 耗时: " + (System.currentTimeMillis() - startTime) + " ms");
                 } catch (Exception e) {
                     rollback();
                     e.printStackTrace();
                 }
             } else {
-                System.out.println(this.getName() + " --> 子线程 <" + key + "> 文件执行失败!");
+                System.out.println(Thread.currentThread().getName() + " --> 子线程 <" + key + "> 文件执行失败!");
             }
         }
         this.close();
