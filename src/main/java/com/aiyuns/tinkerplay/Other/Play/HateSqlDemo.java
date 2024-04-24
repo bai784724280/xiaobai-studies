@@ -66,8 +66,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.lang.Thread;
 
-// import static sqlUtil.HateSqlController.svnPaths;
-
 /*
     这是一个从本地多个文件夹读取.sql文件,
     分别执行sql语句到不同数据库的小工具.
