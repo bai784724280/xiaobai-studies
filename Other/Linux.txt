@@ -349,3 +349,5 @@ JAVA启动参数(解决JDK版本不一致导致的Unable to make field private static final lo
 docker image inspect rabbitmq:latest | grep -i version
 
 本地jar包启动调试: java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 TinkerPlay-0.0.1-SNAPSHOT.jar
+
+mvn dependency:tree
