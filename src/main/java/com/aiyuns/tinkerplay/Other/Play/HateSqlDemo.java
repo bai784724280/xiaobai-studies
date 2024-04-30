@@ -25,6 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.tomcat.util.threads.VirtualThreadExecutor;
 import org.tmatesoft.svn.core.SVNDepth;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.internal.io.dav.DAVRepositoryFactory;
@@ -61,6 +62,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -625,21 +628,12 @@ public class HateSqlDemo {
     }
 
     private synchronized static void commitSVN(){
+        ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
         try {
-            SVNRepositoryFactoryImpl.setup();
-            for (String windowsPath : svnPaths.keySet()) {
-                long startTime = System.currentTimeMillis();
-                File commitFile = new File(windowsPath);
-                SVNStatus status = svnClientManager.getStatusClient().doStatus(commitFile,true);
-                if (status == null || status.getContentsStatus() == SVNStatusType.STATUS_UNVERSIONED) {
-                    svnClientManager.getWCClient().doAdd(commitFile, false, false, false, SVNDepth.INFINITY, false, false);
-                }
-                svnClientManager.getCommitClient().doCommit(new File[]{commitFile}, true, windowsPath, null, null, true, false, SVNDepth.INFINITY);
-                System.out.println(simpleDateFormat.format(new Date()) + ", " + windowsPath + ", SVN 提交完成! 耗时: " + (System.currentTimeMillis()-startTime) + " ms");
-                if (!svnPaths.get(windowsPath)) {
-                    svnPaths.remove(windowsPath);
-                }
+            for (String path : svnPaths.keySet()) {
+                executor.execute(new CommitSVNTask(path));
             }
+            executor.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
             doCleanup();
@@ -674,6 +668,35 @@ public class HateSqlDemo {
             }
         }
         return -1;
+    }
+
+    static class CommitSVNTask implements Runnable {
+        private String path;
+
+        public CommitSVNTask(String path) {
+            this.path = path;
+        }
+
+        @Override
+        public void run() {
+            try {
+                long startTime = System.currentTimeMillis();
+                SVNRepositoryFactoryImpl.setup();
+                File commitFile = new File(path);
+                SVNStatus status = svnClientManager.getStatusClient().doStatus(commitFile,true);
+                if (status == null || status.getContentsStatus() == SVNStatusType.STATUS_UNVERSIONED) {
+                    svnClientManager.getWCClient().doAdd(commitFile, false, false, false, SVNDepth.INFINITY, false, false);
+                }
+                svnClientManager.getCommitClient().doCommit(new File[]{commitFile}, true, path, null, null, true, false, SVNDepth.INFINITY);
+                System.out.println(simpleDateFormat.format(new Date()) + ", " + path + ", SVN 提交完成! 耗时: " + (System.currentTimeMillis()-startTime) + " ms");
+                if (!svnPaths.get(path)) {
+                    svnPaths.remove(path);
+                }
+            } catch (SVNException e) {
+                e.printStackTrace();
+                doCleanup();
+            }
+        }
     }
 
 }
