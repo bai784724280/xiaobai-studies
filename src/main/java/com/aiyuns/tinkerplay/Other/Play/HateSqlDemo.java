@@ -573,6 +573,7 @@ public class HateSqlDemo {
                     if (sqlpath.contains("prd")) {
                         map.put("prd", 6);
                     }
+                    boolean flag = false;
                     for (Row row : sheet) {
                         String cel0 = row.getCell(0) == null ? "" : row.getCell(0).getStringCellValue().toLowerCase().replace(" ","");
                         String cel1 = row.getCell(1) == null ? "" : row.getCell(1).getStringCellValue().toLowerCase();
@@ -583,6 +584,10 @@ public class HateSqlDemo {
                             continue;
                         }
                         if (tableName.equals(cel0) && (cel1.contains(message) || message.contains(cel1)) && (StringUtils.isBlank(cel2) || StringUtils.isBlank(cel4) || StringUtils.isBlank(cel6))) {
+                            boolean outLoopFlag = false;
+                            if (cel1.equals(message)) {
+                                outLoopFlag = true;
+                            }
                             boolean writeFlag = false;
                             for (String s : map.keySet()) {
                                 if (row.getCell(map.get(s)) == null && row.getCell(map.get(s) + 1) == null) {
@@ -599,9 +604,15 @@ public class HateSqlDemo {
                             }
                             if (writeFlag) {
                                 writeWorkbook(workbook);
-                                continue outLoop;
+                                flag = true;
+                                if (outLoopFlag) {
+                                    continue outLoop;
+                                }
                             }
                         }
+                    }
+                    if (flag) {
+                        continue outLoop;
                     }
                     Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
                     newRow.createCell(0).setCellValue(tableName);
