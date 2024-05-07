@@ -19,7 +19,7 @@ public class KfkProducer {
         Random rnd = new Random();
 
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.119.128:9093");
+        props.put("bootstrap.servers", "192.168.1.7:9093");
         props.put("acks", "all");
         props.put("retries", 0);
         props.put("batch.size", 16384);

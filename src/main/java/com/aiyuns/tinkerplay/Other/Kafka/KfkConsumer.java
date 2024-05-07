@@ -22,7 +22,7 @@ public class KfkConsumer {
 
         Properties props = new Properties();
 
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.119.128:9093");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.1.7:9093");
         props.put(ConsumerConfig.GROUP_ID_CONFIG ,"kafeidou_group") ;
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
         props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");

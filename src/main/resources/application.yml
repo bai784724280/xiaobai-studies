@@ -20,7 +20,7 @@ spring:
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://192.168.119.128:3306/tinkerplay?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC&connectionTimeout=60000&socketTimeout=60000
+          url: jdbc:mysql://192.168.1.7:3306/tinkerplay?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC&connectionTimeout=60000&socketTimeout=60000
           username: root
           password: ENC(dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz)
           type: com.alibaba.druid.pool.DruidDataSource
@@ -153,7 +153,7 @@ spring:
       # 非集群使用
       port: 6380
       # 如果docker镜像部署的话,需要写实际的IP
-      host: 192.168.119.128
+      host: 192.168.1.7
       # host: 127.0.0.1
       password: ENC(dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz)
       timeout: 60000 #连接超时时间（毫秒）
@@ -170,8 +170,8 @@ spring:
         max-wait: -1
   rabbitmq:
     # addresses: 192.168.100.120:5672,192.168.100.121:5672,192.168.100.122:5672
-    # addresses: 192.168.119.128:5672
-    addresses: 192.168.119.128
+    # addresses: 192.168.1.7:5672
+    addresses: 192.168.1.7
     port: 5672
     virtual-host: /baiyx
     username: baiyx
@@ -184,7 +184,7 @@ spring:
     publisher-confirm-type: correlated
   elasticsearch:
     rest:
-      uris: http://192.168.119.128:9200
+      uris: http://192.168.1.7:9200
   # 解决springboot升级2.7.5导致的ApplicationContextException
   mvc:
     pathmatch:
@@ -195,9 +195,9 @@ spring:
         import-check:
           enabled: false
       discovery:
-        server-addr: 192.168.119.128:8848 #配置Nacos地址
+        server-addr: 192.168.1.7:8848 #配置Nacos地址
   kafka:
-    bootstrap-servers: 192.168.119.128:9093
+    bootstrap-servers: 192.168.1.7:9093
     consumer:
       group-id: my-consumer-group
       auto-offset-reset: earliest
@@ -274,7 +274,7 @@ data:
   elasticsearch:
     repositories:
       enabled: true
-    cluster-nodes: 192.168.119.128:9300 # es的连接地址及端口号
+    cluster-nodes: 192.168.1.7:9300 # es的连接地址及端口号
     cluster-name: elasticsearch # es集群的名称
 
 minio:
@@ -305,7 +305,7 @@ token:
 nacos:
   # Nacos 配置中心的配置项，对应 NacosConfigProperties 配置类
   config:
-    server-addr: 192.168.119.128:8848 # Nacos 服务器地址
+    server-addr: 192.168.1.7:8848 # Nacos 服务器地址
     bootstrap:
       enable: true # 是否开启 Nacos 配置预加载功能。默认为 false。
       # log-enable: true # 是否开启 Nacos 支持日志级别的加载时机。默认为 false。
@@ -317,7 +317,7 @@ nacos:
 cdc:
   datasource:
     enabled: true
-    hostname: 192.168.119.128
+    hostname: 192.168.1.7
     port: 3306
     database: tinkerplay
     tableList: user

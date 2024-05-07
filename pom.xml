@@ -18,7 +18,7 @@
         <!--打包后镜像的前缀-->
         <docker.image.prefix>aiyuns</docker.image.prefix>
         <!--docker仓库地址-->
-        <docker.repostory>192.168.119.128:2375</docker.repostory>
+        <docker.repostory>192.168.1.7:2375</docker.repostory>
         <!--自定义yml变量符号-->
         <resource.delimiter>#</resource.delimiter>
         <maven.compiler.source>21</maven.compiler.source>
@@ -730,9 +730,9 @@
                 </executions>
                 <configuration>
                     <!-- Docker 远程管理地址-->
-                    <dockerHost>http://192.168.119.128:2375</dockerHost>
+                    <dockerHost>http://192.168.1.7:2375</dockerHost>
                     <!-- Docker 推送镜像仓库地址-->
-                    <pushRegistry>http://192.168.119.128:50</pushRegistry>
+                    <pushRegistry>http://192.168.1.7:50</pushRegistry>
                     <!-- 认证信息-->
                     <authConfig>
                         <push>
