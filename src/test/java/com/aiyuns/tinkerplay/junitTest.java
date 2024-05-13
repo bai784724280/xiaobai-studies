@@ -860,30 +860,30 @@ public class junitTest implements Runnable{
         redisService.del("A");
     }
 
-    // yml配置文件敏感信息加密
+    // 加密
     @Test
     public void testEncrypt() throws Exception {
         StandardPBEStringEncryptor standardPBEStringEncryptor = new StandardPBEStringEncryptor();
         EnvironmentPBEConfig config = new EnvironmentPBEConfig();
 
-        config.setAlgorithm("PBEWithMD5AndDES");          // 加密的算法，这个算法是默认的
-        config.setPassword("baiyx");                        // 加密的密钥，随便自己填写，很重要千万不要告诉别人
+        config.setAlgorithm("PBEWithMD5AndDES");
+        config.setPassword("xxxxx");
         standardPBEStringEncryptor.setConfig(config);
-        String plainText = "minioadmin";         //自己的密码
+        String plainText = "xxxxxxx";
         String encryptedText = standardPBEStringEncryptor.encrypt(plainText);
         System.out.println("密码：" + encryptedText);
     }
 
-    // yml配置文件敏感信息解密
+    // 解密
     @Test
     public void testDe() throws Exception {
         StandardPBEStringEncryptor standardPBEStringEncryptor = new StandardPBEStringEncryptor();
         EnvironmentPBEConfig config = new EnvironmentPBEConfig();
 
         config.setAlgorithm("PBEWithMD5AndDES");
-        config.setPassword("baiyx");
+        config.setPassword("xxxxx");
         standardPBEStringEncryptor.setConfig(config);
-        String encryptedText = "dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz";   //加密后的密码
+        String encryptedText = "dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz";
         String plainText = standardPBEStringEncryptor.decrypt(encryptedText);
         System.out.println(plainText);
     }
