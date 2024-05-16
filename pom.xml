@@ -15,15 +15,6 @@
     <description>TinkerPlay for Spring Boot</description>
     <properties>
         <java.version>21</java.version>
-        <!--打包后镜像的前缀-->
-        <docker.image.prefix>aiyuns</docker.image.prefix>
-        <!--docker仓库地址-->
-        <docker.repostory>192.168.1.7:2375</docker.repostory>
-        <!--自定义yml变量符号-->
-        <resource.delimiter>#</resource.delimiter>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-<!--        <maven.compiler.release>21</maven.compiler.release>-->
     </properties>
     <dependencyManagement>
         <!--
@@ -685,18 +676,6 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>10.1.0</version>
-                <configuration>
-                    <url>jdbc:mysql://localhost:3306/tinkerplay?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai
-                    </url>
-                    <user>root</user>
-                    <password>19930218</password>
-                    <driver>com.mysql.cj.jdbc.Driver</driver>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -730,14 +709,14 @@
                 </executions>
                 <configuration>
                     <!-- Docker 远程管理地址-->
-                    <dockerHost>http://192.168.1.7:2375</dockerHost>
+                    <dockerHost>http://${my.ip}:12375</dockerHost>
                     <!-- Docker 推送镜像仓库地址-->
-                    <pushRegistry>http://192.168.1.7:50</pushRegistry>
+                    <pushRegistry>http://${my.ip}:15000</pushRegistry>
                     <!-- 认证信息-->
                     <authConfig>
                         <push>
                             <username>admin</username>
-                            <password>Baiyx19930218</password>
+                            <password>${my.password}</password>
                         </push>
                     </authConfig>
                     <images>
