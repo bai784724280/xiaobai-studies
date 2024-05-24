@@ -76,10 +76,10 @@ import java.lang.Thread;
  */
 public class HateSqlDemo {
 
-    public static Map<String, Boolean> warnSql = new HashMap<>();
-    public static Map<String, String> analyzeSqlResult = new HashMap<>();
-    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public static ConcurrentHashMap<String, Boolean> svnPaths = new ConcurrentHashMap<>();
+    protected static ConcurrentHashMap<String, Boolean> svnPaths = new ConcurrentHashMap<>();
+    protected static Map<String, String> analyzeSqlResult = new HashMap<>();
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static Map<String, Boolean> warnSql = new HashMap<>();
     private static Map<String,String> paths;
     private static Map<String,List<String>> excel = new HashMap<>();
     private static XSSFWorkbook workbook;
@@ -152,7 +152,7 @@ public class HateSqlDemo {
         }
     }
 
-    public static void main(String[] args){
+    private static void main(String[] args){
         long startTime = System.currentTimeMillis();
         int threadNum = 0;
         LinkedHashMap<String,ArrayList<String>> sqlMap = null;
@@ -241,7 +241,7 @@ public class HateSqlDemo {
         }
     }
 
-    public synchronized static void updateSVN(){
+    private synchronized static void updateSVN(){
         try {
             DAVRepositoryFactory.setup();
             SVNUpdateClient updateClient = svnClientManager.getUpdateClient();
@@ -261,7 +261,7 @@ public class HateSqlDemo {
         }
     }
 
-    public static LinkedHashMap<String,ArrayList<String>> readSql(ArrayList<File> files,LinkedHashMap<String,ArrayList<String>> sqlMap){
+    private static LinkedHashMap<String,ArrayList<String>> readSql(ArrayList<File> files,LinkedHashMap<String,ArrayList<String>> sqlMap){
         FileInputStream stream = null;
         InputStreamReader reader = null;
         BufferedReader bufferedReader = null;
