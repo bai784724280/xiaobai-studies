@@ -9,13 +9,13 @@ spring:
       datasource:
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://${encpt.ip}:23306/tinkerplay?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&connectionTimeout=60000&socketTimeout=60000
+          url: jdbc:mysql://${my.ip}:23306/tinkerplay?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&connectionTimeout=60000&socketTimeout=60000
           username: root
           password: ENC(dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz)
           type: com.alibaba.druid.pool.DruidDataSource
         slave_1:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://${encpt.ip}:13306/tinkerplay?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&connectionTimeout=60000&socketTimeout=60000
+          url: jdbc:mysql://${my.ip}:13306/tinkerplay?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&connectionTimeout=60000&socketTimeout=60000
           username: root
           password: ENC(dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz)
           type: com.alibaba.druid.pool.DruidDataSource
@@ -37,19 +37,19 @@ spring:
   data:
     redis:
       port: 16380
-      host: ${encpt.ip}
+      host: ${my.ip}
   rabbitmq:
-    addresses: ${encpt.ip}
+    addresses: ${my.ip}
     port: 25672
   elasticsearch:
     rest:
-      uris: http://${encpt.ip}:19200
+      uris: http://${my.ip}:19200
   cloud:
     nacos:
       discovery:
-        server-addr: ${encpt.ip}:38848
+        server-addr: ${my.ip}:38848
   kafka:
-    bootstrap-servers: ${encpt.ip}:19093
+    bootstrap-servers: ${my.ip}:19093
 
 body:
   encrypt:
@@ -72,10 +72,10 @@ pdf:
 
 data:
   elasticsearch:
-    cluster-nodes: ${encpt.ip}:19300
+    cluster-nodes: ${my.ip}:19300
 
 minio:
-  endpoint: http://${encpt.ip}:19095
+  endpoint: http://${my.ip}:19095
 
 token:
   TOKEN_SECRET: my-secret-key
@@ -87,7 +87,7 @@ nacos:
 cdc:
   datasource:
     enabled: true
-    hostname: ${encpt.ip}
+    hostname: ${my.ip}
     port: 23306
     database: tinkerplay
     tableList: user
