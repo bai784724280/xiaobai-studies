@@ -326,3 +326,6 @@ cdc:
 
 timedtask:
   enabled: true
+
+my:
+  ip: ${MY_ADDRESS}
