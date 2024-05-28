@@ -95,4 +95,4 @@ cdc:
     password: ENC(dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz)
 
 timedtask:
-  enabled: true
+  enabled: false
