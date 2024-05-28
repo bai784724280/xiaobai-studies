@@ -41,7 +41,7 @@ public class TinkerPlayApplication {
         // 启动打开默认浏览器访问
 //        try {
 //            Runtime.getRuntime().exec("cmd /c start http://localhost:9092/api/upload.html");
-//            // Runtime.getRuntime().exec("cmd /c start http://192.168.119.128:1001/api/upload.html");
+//            // Runtime.getRuntime().exec("cmd /c start http://192.168.1.7:1001/api/upload.html");
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }

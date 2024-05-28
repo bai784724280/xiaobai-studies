@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.3</version>
+        <version>3.2.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.aiyuns</groupId>
@@ -15,15 +15,6 @@
     <description>TinkerPlay for Spring Boot</description>
     <properties>
         <java.version>21</java.version>
-        <!--打包后镜像的前缀-->
-        <docker.image.prefix>aiyuns</docker.image.prefix>
-        <!--docker仓库地址-->
-        <docker.repostory>192.168.119.128:2375</docker.repostory>
-        <!--自定义yml变量符号-->
-        <resource.delimiter>#</resource.delimiter>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-<!--        <maven.compiler.release>21</maven.compiler.release>-->
     </properties>
     <dependencyManagement>
         <!--
@@ -39,7 +30,7 @@
             <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>33.0.0-jre</version>
+            <version>33.2.0-jre</version>
             </dependency>
             <!-- nacos -->
             <dependency>
@@ -59,6 +50,12 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- 汉语言处理包 -->
+        <dependency>
+            <groupId>com.hankcs</groupId>
+            <artifactId>hanlp</artifactId>
+            <version>portable-1.8.4</version>
+        </dependency>
         <!-- 监控文件夹 -->
         <dependency>
         <groupId>commons-io</groupId>
@@ -82,12 +79,12 @@
             <groupId>org.tmatesoft.svnkit</groupId>
             <artifactId>svnkit</artifactId>
             <version>1.10.11</version>
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.antlr</groupId>-->
-<!--                    <artifactId>antlr-runtime</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- 支付宝支付依赖 -->
         <dependency>
@@ -115,18 +112,23 @@
         <!-- kafka -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
+            <artifactId>connect-api</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>3.6.1</version>
+            <version>3.7.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
-            <version>3.6.1</version>
+            <version>3.7.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams-scala_2.13</artifactId>
-            <version>3.6.1</version>
+            <version>3.7.0</version>
         </dependency>
         <!-- 发送短信的三方包 -->
         <dependency>
@@ -142,90 +144,48 @@
         </dependency>
         <!-- flink -->
         <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-runtime-web</artifactId>
-            <version>1.17.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-elasticsearch-base</artifactId>
-            <version>3.0.1-1.17</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.elasticsearch.client</groupId>
-                    <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.elasticsearch.client</groupId>
-                    <artifactId>elasticsearch-rest-client</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.elasticsearch</groupId>
-                    <artifactId>elasticsearch-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.elasticsearch</groupId>
-                    <artifactId>elasticsearch</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>com.ververica</groupId>
-            <artifactId>flink-sql-connector-mysql-cdc</artifactId>
-            <version>2.4.1</version>
+            <artifactId>flink-connector-debezium</artifactId>
+            <version>3.0.1</version>
             <exclusions>
                 <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>javax.servlet-api</artifactId>
+                    <groupId>io.swagger.core.v3</groupId>
+                    <artifactId>swagger-annotations</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>1.17.1</version>
+            <artifactId>flink-core</artifactId>
+            <version>1.19.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java</artifactId>
-            <version>1.17.1</version>
+            <version>1.19.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ververica</groupId>
+            <artifactId>flink-connector-mysql-cdc</artifactId>
+            <version>3.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-api-java-bridge</artifactId>
+            <version>1.19.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-clients</artifactId>
-            <version>1.17.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ververica</groupId>
-            <artifactId>flink-connector-mysql-cdc</artifactId>
-            <version>2.4.1</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.reload4j</groupId>
-                    <artifactId>reload4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>io.swagger.core.v3</groupId>
-                    <artifactId>swagger-annotations</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.eclipse.jetty.toolchain</groupId>
-                    <artifactId>jetty-jakarta-servlet-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka</artifactId>
-            <version>3.0.0-1.17</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-table-planner-blink_2.12</artifactId>
-            <version>1.13.6</version>
+            <version>1.19.0</version>
         </dependency>
         <!-- nacos -->
         <dependency>
@@ -270,7 +230,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.26</version>
+            <version>5.8.27</version>
         </dependency>
         <!-- 上传OSS -->
         <dependency>
@@ -362,12 +322,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr4-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- ChatGPT -->
         <dependency>
             <groupId>com.github.plexpt</groupId>
             <artifactId>chatgpt</artifactId>
-            <version>4.3.0</version>
+            <version>4.4.0</version>
         </dependency>
         <dependency>
             <groupId>com.theokanning.openai-gpt3-java</groupId>
@@ -416,8 +382,8 @@
         <!-- SM2非对称加密生成密钥 -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.70</version>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.77</version>
         </dependency>
         <!-- 爬虫 解析HTML页面 -->
         <dependency>
@@ -450,17 +416,17 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.3.0</version>
+            <version>2.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-            <version>2.3.0</version>
+            <version>2.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-            <version>2.2.0</version>
+            <version>2.5.0</version>
         </dependency>
         <!-- 服务启动时自动升级内置的SQL脚本 -->
         <!-- 支持低数据库5.7版本 -->
@@ -536,7 +502,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>3.3.3</version>
+            <version>3.3.4</version>
         </dependency>
         <!--消息队列AMQP依赖，包含RabbitMQ-->
         <dependency>
@@ -552,13 +518,8 @@
         <!-- 德鲁伊数据连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.2.20</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.20</version>
+            <version>1.2.23</version>
         </dependency>
         <!-- JSON-Web-Token -->
         <dependency>
@@ -576,7 +537,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.10.1</version>
+            <version>2.11.0</version>
         </dependency>
         <!-- mysql驱动 -->
         <dependency>
@@ -627,7 +588,7 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.15</version>
+            <version>3.5.16</version>
         </dependency>
         <!-- 自动装配:配置文件配置项值、环境变量值、操作系统等等自定义可变量，自动将对应的组件（对象）注入到我们的应用中 -->
         <dependency>
@@ -710,18 +671,6 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>10.1.0</version>
-                <configuration>
-                    <url>jdbc:mysql://localhost:3306/tinkerplay?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai
-                    </url>
-                    <user>root</user>
-                    <password>19930218</password>
-                    <driver>com.mysql.cj.jdbc.Driver</driver>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -755,14 +704,14 @@
                 </executions>
                 <configuration>
                     <!-- Docker 远程管理地址-->
-                    <dockerHost>http://192.168.119.128:2375</dockerHost>
+                    <dockerHost>http://${my.ip}:12375</dockerHost>
                     <!-- Docker 推送镜像仓库地址-->
-                    <pushRegistry>http://192.168.119.128:50</pushRegistry>
+                    <pushRegistry>http://${my.ip}:15000</pushRegistry>
                     <!-- 认证信息-->
                     <authConfig>
                         <push>
                             <username>admin</username>
-                            <password>Baiyx19930218</password>
+                            <password>${my.password}</password>
                         </push>
                     </authConfig>
                     <images>
@@ -794,6 +743,20 @@
                                     <exec>
                                         <arg>java</arg>
                                         <arg>--add-opens=java.base/java.util=ALL-UNNAMED</arg>
+                                        <arg>--add-opens=java.base/java.lang=ALL-UNNAMED</arg>
+                                        <arg>--add-opens=java.base/java.nio=ALL-UNNAMED</arg>
+                                        <arg>--add-opens=java.base/sun.nio.ch=ALL-UNNAMED</arg>
+                                        <arg>-Xms1G</arg>
+                                        <arg>-Xmx2G</arg>
+                                        <arg>-XX:ReservedCodeCacheSize=64m</arg>
+                                        <arg>-XX:InitialCodeCacheSize=32m</arg>
+                                        <arg>-XX:+UnlockExperimentalVMOptions</arg>
+                                        <arg>-XX:+UseZGC</arg>
+                                        <arg>-XX:ConcGCThreads=2</arg>
+                                        <arg>-XX:ParallelGCThreads=3</arg>
+                                        <arg>-XX:ZCollectionInterval=60</arg>
+                                        <arg>-XX:ZAllocationSpikeTolerance=2</arg>
+                                        <arg>-Xlog:safepoint,classhisto*=trace,age*,gc*=info:file=/logs/${project.artifactId}/gc-%t.log:time,tid,tags:filecount=5,filesize=50m</arg>
                                         <arg>-jar</arg>
                                         <arg>/${project.artifactId}/${project.build.finalName}.jar</arg>
                                     </exec>
