@@ -47,7 +47,7 @@ public class ImageBoundaryAnalysis {
         Imgproc.drawContours(contourImage, contours, -1, new Scalar(0, 255, 0), 2);
 
         // 显示结果
-        Imgcodecs.imwrite("output.jpg", contourImage);
-        System.out.println("边界分析完成，结果已保存到 output.jpg");
+        Imgcodecs.imwrite("output0.jpg", contourImage);
+        System.out.println("边界分析完成，结果已保存到 output0.jpg");
     }
 }
