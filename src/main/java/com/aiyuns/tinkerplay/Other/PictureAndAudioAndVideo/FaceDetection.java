@@ -6,7 +6,7 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 // 计算机视觉: 人脸识别
-public class FaceDetectionDemo {
+public class FaceDetection {
 
     static {
         // 加载 OpenCV 库
