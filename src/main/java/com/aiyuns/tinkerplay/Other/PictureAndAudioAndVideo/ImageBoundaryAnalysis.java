@@ -7,6 +7,7 @@ import org.opencv.imgproc.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// 特征提取和匹配: 边缘检测
 public class ImageBoundaryAnalysis {
 
     public static void main(String[] args) {
