@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.6</version>
+        <version>3.2.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.aiyuns</groupId>
@@ -30,7 +30,7 @@
             <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>33.2.0-jre</version>
+            <version>33.2.1-jre</version>
             </dependency>
             <!-- nacos -->
             <dependency>
@@ -50,6 +50,12 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <!-- 图片处理库 -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.9.0-1.5.10</version>
+        </dependency>
         <!-- 汉语言处理包 -->
         <dependency>
             <groupId>com.hankcs</groupId>
@@ -416,17 +422,17 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.5.0</version>
+            <version>2.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-            <version>2.5.0</version>
+            <version>2.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-            <version>2.5.0</version>
+            <version>2.6.0</version>
         </dependency>
         <!-- 服务启动时自动升级内置的SQL脚本 -->
         <!-- 支持低数据库5.7版本 -->
@@ -502,7 +508,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>3.3.4</version>
+            <version>4.0.1</version>
         </dependency>
         <!--消息队列AMQP依赖，包含RabbitMQ-->
         <dependency>
@@ -513,7 +519,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
-            <version>4.3.0</version>
+            <version>4.3.1</version>
         </dependency>
         <!-- 德鲁伊数据连接池 -->
         <dependency>
