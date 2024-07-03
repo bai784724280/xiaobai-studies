@@ -50,7 +50,7 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <!-- 图片处理库 -->
+        <!-- 图像和视频处理库 -->
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>opencv</artifactId>
@@ -236,7 +236,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.28</version>
+            <version>5.8.29</version>
         </dependency>
         <!-- 上传OSS -->
         <dependency>
