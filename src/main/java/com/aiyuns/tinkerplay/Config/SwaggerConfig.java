@@ -39,15 +39,15 @@ public class SwaggerConfig {
                         .version("0.0.1-SNAPSHOT")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("SpringDoc")
-                        .url("https://github.com/bai784724280/TinkerPlay"));
+                        .description("TinkerPlayDoc")
+                        .url("https://github.com/aiYunS-love/TinkerPlay"));
     }
 
 //    private ApiInfo apiInfo() {
 //        // 作者信息
 //        Contact contact = new Contact("aiYunS","https://gitee.com/aiYunS", "784724280@qq.com");
 //        return new ApiInfoBuilder()
-//                .title("小白学习")
+//                .title("学习")
 //                .description("aiYunS-study")
 //                .contact(contact)
 //                .version("0.0.1-SNAPSHOT")
