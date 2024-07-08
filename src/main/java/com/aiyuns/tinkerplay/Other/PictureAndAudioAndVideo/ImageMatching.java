@@ -53,6 +53,6 @@ public class ImageMatching {
                 new MatOfDMatch(goodMatches.toArray(new DMatch[0])), outputImage);
 
         // 显示匹配结果
-        Imgcodecs.imwrite("output1.jpg", outputImage);
+        Imgcodecs.imwrite("/Users/yuxinbai/Desktop/output1.jpg", outputImage);
     }
 }
