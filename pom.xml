@@ -33,12 +33,6 @@
         import: 只能在dependencyManagement中使用，相当于从其他pom文件中导入依赖设置
          -->
         <dependencies>
-            <!--  Google的一组核心Java库 -->
-            <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>33.2.1-jre</version>
-            </dependency>
             <!-- nacos -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
