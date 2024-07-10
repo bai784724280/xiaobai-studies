@@ -3,7 +3,6 @@ package com.aiyuns.tinkerplay.Other.PictureAndAudioAndVideo;
 import org.opencv.core.*;
 import org.opencv.features2d.*;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 import java.util.ArrayList;
