@@ -15,7 +15,7 @@ public class ImageBoundaryAnalysis {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         // 读取图片
-        String imagePath = "/Users/yuxinbai/Desktop/image.jpg"; // 替换为你的图片路径
+        String imagePath = "/Users/yuxinbai/Desktop/face1.jpg"; // 替换为你的图片路径
         Mat image = Imgcodecs.imread(imagePath);
 
         if (image.empty()) {
@@ -47,7 +47,7 @@ public class ImageBoundaryAnalysis {
         Imgproc.drawContours(contourImage, contours, -1, new Scalar(0, 255, 0), 2);
 
         // 显示结果
-        Imgcodecs.imwrite("output0.jpg", contourImage);
+        Imgcodecs.imwrite("/Users/yuxinbai/Desktop/output0.jpg", contourImage);
         System.out.println("边界分析完成，结果已保存到 output0.jpg");
     }
 }

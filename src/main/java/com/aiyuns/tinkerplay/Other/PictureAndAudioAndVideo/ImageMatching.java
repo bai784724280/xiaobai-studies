@@ -3,7 +3,6 @@ package com.aiyuns.tinkerplay.Other.PictureAndAudioAndVideo;
 import org.opencv.core.*;
 import org.opencv.features2d.*;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -53,6 +52,6 @@ public class ImageMatching {
                 new MatOfDMatch(goodMatches.toArray(new DMatch[0])), outputImage);
 
         // 显示匹配结果
-        Imgcodecs.imwrite("output1.jpg", outputImage);
+        Imgcodecs.imwrite("/Users/yuxinbai/Desktop/output1.jpg", outputImage);
     }
 }

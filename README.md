@@ -101,7 +101,8 @@ JAVA_21 + springboot_3.2.7 + mybatis_3.5.16 + redis_7.0.9 + rabbitmq_3.11.10 + E
 51. 现有功能全部适配SpringBoot_3.2.0版本,测试并发现问题及处理
 52. 配合拦截器,实现限流的基本思路和原理
 53. 程序加载词向量模型, 判断汉语语句相似度Demo
-54. ................................
+54. 尝试玩下地理信息相关的Java开源包及前端开发包(com.esri.arcgisruntim, org.geotools, org.gdal, org.locationtech.jts, JavaFX)
+55. ................................
 
 #### 部署内容
 Linux:

@@ -41,7 +41,7 @@ public class FaceDetection {
         }
 
         // 保存检测结果图像
-        Imgcodecs.imwrite("output.jpg", image);
+        Imgcodecs.imwrite("/Users/yuxinbai/Desktop/output.jpg", image);
 
         System.out.println("人脸识别完成，结果已保存到 output.jpg");
     }

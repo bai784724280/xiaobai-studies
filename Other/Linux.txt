@@ -351,3 +351,12 @@ docker image inspect rabbitmq:latest | grep -i version
 本地jar包启动调试: java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 TinkerPlay-0.0.1-SNAPSHOT.jar
 
 mvn dependency:tree
+
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.controls.jar -DgroupId=org.openjfx -DartifactId=javafx.controls -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.fxml.jar -DgroupId=org.openjfx -DartifactId=javafx.fxml -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx-swt.jar -DgroupId=org.openjfx -DartifactId=javafx-swt -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.base.jar -DgroupId=org.openjfx -DartifactId=javafx.base -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.graphics.jar -DgroupId=org.openjfx -DartifactId=javafx.graphics -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.media.jar -DgroupId=org.openjfx -DartifactId=javafx.media -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.swing.jar -DgroupId=org.openjfx -DartifactId=javafx.swing -Dversion=21.0.3 -Dpackaging=jar
+mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.web.jar -DgroupId=org.openjfx -DartifactId=javafx.web -Dversion=21.0.3 -Dpackaging=jar
