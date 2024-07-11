@@ -6,7 +6,7 @@ package com.aiyuns.tinkerplay.Other.Demo;
  * @Description: 研究继承关系的程序执行顺序: 测试类
  */
 
-public class DemoTest1 {
+public class ParentAndChildDemo {
 
     public static void main(String[] args){
 

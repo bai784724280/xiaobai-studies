@@ -1,6 +1,6 @@
 package com.aiyuns.tinkerplay.Algorithm;
 
-import com.aiyuns.tinkerplay.Other.Demo.GloVeModelLoader;
+import com.aiyuns.tinkerplay.Other.Demo.GloVeModelLoaderDemo;
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.seg.common.Term;
 import org.apache.commons.math3.linear.ArrayRealVector;
@@ -15,10 +15,10 @@ import java.util.List;
  */
 
 public class SentenceSimilarity {
-    private static final GloVeModelLoader loader;
+    private static final GloVeModelLoaderDemo loader;
 
     static {
-        loader = new GloVeModelLoader("E:\\aiyuns\\sgns.wiki.bigram-char.txt");
+        loader = new GloVeModelLoaderDemo("E:\\aiyuns\\sgns.wiki.bigram-char.txt");
     }
 
     public static void main(String[] args) {

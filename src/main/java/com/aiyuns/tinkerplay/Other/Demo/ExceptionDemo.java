@@ -1,6 +1,6 @@
 package com.aiyuns.tinkerplay.Other.Demo;
 
-public class ExceptionTest {
+public class ExceptionDemo {
 
     static int count = 0;
 

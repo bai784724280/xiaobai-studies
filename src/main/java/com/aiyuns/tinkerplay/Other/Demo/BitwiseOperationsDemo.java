@@ -1,7 +1,7 @@
 package com.aiyuns.tinkerplay.Other.Demo;
 
 // 位运算
-public class BitwiseOperations {
+public class BitwiseOperationsDemo {
 
     public static void main(String[] args) {
         int a = 5;  // 0101

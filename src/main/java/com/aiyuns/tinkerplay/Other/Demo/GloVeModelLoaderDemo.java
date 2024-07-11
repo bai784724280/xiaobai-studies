@@ -15,11 +15,11 @@ import java.util.Map;
  * @Description: 加载词向量模型
  */
 
-public class GloVeModelLoader {
+public class GloVeModelLoaderDemo {
 
     private Map<String, RealVector> wordVectors;
 
-    public GloVeModelLoader(String filePath) {
+    public GloVeModelLoaderDemo(String filePath) {
         wordVectors = loadModel(filePath);
     }
 
@@ -49,7 +49,7 @@ public class GloVeModelLoader {
 
     public static void main(String[] args) {
         String filePath = "E:\\aiyuns\\glove.6B.50d.txt";
-        GloVeModelLoader loader = new GloVeModelLoader(filePath);
+        GloVeModelLoaderDemo loader = new GloVeModelLoaderDemo(filePath);
 
         // Example usage:
         String word = "example";
