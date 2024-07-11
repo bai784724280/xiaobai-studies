@@ -25,8 +25,12 @@ CREATE TABLE `account`  (
   `id` int(11) NOT NULL,
   `uid` int(11) NULL DEFAULT NULL,
   `money` double NULL DEFAULT NULL,
+  `account_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '账户号码',
+  `balance` decimal(10, 0) NOT NULL DEFAULT 0 COMMENT '金额',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- ----------------------------
 -- Table structure for account2
