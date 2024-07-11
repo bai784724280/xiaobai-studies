@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * @Author: aiYunS
  * @Date: 2022-10-12 下午 04:50
- * @Description: 说明
+ * @Description: Token
  */
 @Service
 public class TokenAccessServiceImpl implements TokenAccessService {
