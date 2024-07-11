@@ -11,7 +11,7 @@ import java.util.List;
  * @Date: 2023年6月29日, 0029 下午 4:54:12
  * @Description: word读取demo
  */
-public class WordContentExtractor {
+public class WordContentExtractorDemo {
     public static void main(String[] args) {
         try {
             // 加载Word文档

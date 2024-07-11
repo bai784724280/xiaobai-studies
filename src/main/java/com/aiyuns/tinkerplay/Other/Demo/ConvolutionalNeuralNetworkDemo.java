@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @Description: 卷积神经网络 Gemini
  */
 
-public class ConvolutionalNeuralNetwork {
+public class ConvolutionalNeuralNetworkDemo {
 
     public static void main(String[] args) {
 

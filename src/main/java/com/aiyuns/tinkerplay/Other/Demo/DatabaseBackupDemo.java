@@ -14,7 +14,7 @@ import java.util.zip.ZipOutputStream;
  * @Date: 2023年6月26日, 0026 上午 9:40:09
  * @Description: 数据库备份demo
  */
-public class DatabaseBackup {
+public class DatabaseBackupDemo {
     public static void main(String[] args) {
         String host = "localhost";
         String username = "root";
