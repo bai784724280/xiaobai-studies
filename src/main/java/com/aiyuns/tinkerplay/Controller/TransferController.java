@@ -3,7 +3,7 @@ package com.aiyuns.tinkerplay.Controller;
 import com.aiyuns.tinkerplay.Controller.Service.TransferService;
 import com.aiyuns.tinkerplay.Entity.TransferRequest;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "transferController")
+@RequestMapping(value = "/transferController")
 @Tag(name = "TransferController", description = "金融模块")
 public class TransferController {
 
-    @Autowired
+    @Resource
     private TransferService transferService;
 
     @PostMapping
