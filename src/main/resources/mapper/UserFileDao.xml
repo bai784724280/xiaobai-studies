@@ -15,6 +15,9 @@
     <select id="queryByUserId" parameterType="Integer" resultMap="UserFileMap">
         select * from files
         where user_id = #{id}
+        <if test="deleted != null and deleted != ''">
+            and deleted = #{deleted}
+        </if>
         order by id
         limit #{begin}, #{offset};
     </select>
@@ -34,7 +37,7 @@
 
     <!-- 下载文件-->
     <select id="queryByUserFileId" parameterType="Integer" resultMap="UserFileMap">
-        select * from files where id = #{id};
+        select * from files where id = #{id} and deleted = 1;
     </select>
 
     <!-- 更新文件下载次数-->
@@ -42,10 +45,15 @@
         update files set download_counts = #{downloadCounts} where id = #{id};
     </update>
 
-    <!-- 删除文件-->
+    <!-- 物理删除文件-->
     <delete id="deleteFile" parameterType="string">
         delete from files where file_name=#{objectName};
     </delete>
+
+    <!-- 逻辑删除文件-->
+    <update id="falseDeleteFile" parameterType="string">
+        update files set deleted = 0 where file_name=#{objectName};
+    </update>
 
     <!-- 根据用户id查询文件列表-->
     <select id="queryByFileName" parameterType="string" resultMap="UserFileMap">

@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserFileService {
 
     // 根据用户id获得文件列表
-    List<UserFile> queryByUserId(Integer id, Integer page, Integer limit);
+    List<UserFile> queryByUserId(Integer id, int deleted, Integer page, Integer limit);
 
     // 根据用户id获得文件数
     int queryFileCounts(Integer id);
@@ -32,6 +32,10 @@ public interface UserFileService {
     // 删除文件
     @Async
     void deleteFile(String objectName);
+
+    // 逻辑删除文件
+    @Async
+    void falseDeleteFile(String objectName);
 
     // 根据文件名查询
     UserFile queryByFileName(String objectName);

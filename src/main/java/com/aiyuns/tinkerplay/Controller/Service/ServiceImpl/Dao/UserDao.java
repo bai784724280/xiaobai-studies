@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Mapper
 @CacheConfig(cacheNames = "UserDao")
-public interface UserDao extends EsUserRepository {
+public interface UserDao {
 
     // 查
     // @Cacheable(cacheNames = "findAll",cacheManager = "cacheManager")

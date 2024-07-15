@@ -28,11 +28,11 @@ public class UserFileServiceImpl implements UserFileService{
      * @return
      */
     @Override
-    public List<UserFile> queryByUserId(Integer id, Integer page, Integer limit){
+    public List<UserFile> queryByUserId(Integer id, int deleted, Integer page, Integer limit){
         // page表示第几页，limit表示每页显示多少行数据
         int begin = (page-1)*limit;   // 该计算方法获得开始的位置
         int offset = limit;
-        return userFileDao.queryByUserId(id, begin, limit);
+        return userFileDao.queryByUserId(id, deleted, begin, limit);
     }
 
     /**
@@ -70,6 +70,11 @@ public class UserFileServiceImpl implements UserFileService{
     @Override
     public void deleteFile(String objectName) {
         userFileDao.deleteFile(objectName);
+    }
+
+    @Override
+    public void falseDeleteFile(String objectName) {
+        userFileDao.falseDeleteFile(objectName);
     }
 
     // 根据文件名查询

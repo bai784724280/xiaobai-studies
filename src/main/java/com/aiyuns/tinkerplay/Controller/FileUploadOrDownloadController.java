@@ -35,6 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -247,14 +248,15 @@ public class FileUploadOrDownloadController {
     }
 
     // 获取文件列表
-    @Operation(summary = "获取文件列表")
-    @PostMapping("queryAllFile")
+    @Operation(summary = "获取某个用户的文件列表")
+    @PostMapping("queryAllFileById")
     @ResponseBody
-    public Map<String, Object> queryAllFile(HttpSession session, HttpServletRequest request){
+    public Map<String, Object> queryAllFileById(HttpSession session, HttpServletRequest request){
+        int deleted = request.getParameter("deleted") == null ? 1 : Integer.parseInt(request.getParameter("deleted"));
         int page = Integer.parseInt(request.getParameter("page") == null? "1":request.getParameter("page"));
         int limit = Integer.parseInt(request.getParameter("limit") == null? "100":request.getParameter("limit"));
         User user = (User) (session.getAttribute("user") == null? new User(1):session.getAttribute("user"));
-        List<UserFile> files = userFileService.queryByUserId(user.getId(), page, limit);
+        List<UserFile> files = userFileService.queryByUserId(user.getId(), deleted, page, limit);
 
         Map<String, Object> res = new HashMap<>();
         res.put("code", 0);
@@ -303,8 +305,14 @@ public class FileUploadOrDownloadController {
             return "没有找到任何文件!";
         }
         if(!realPath.startsWith("http")){
-            // 普通上传
-            FileInputStream is = new FileInputStream(new File(realPath));
+            FileInputStream is = null;
+            try {
+                // 普通上传
+                is = new FileInputStream(new File(realPath));
+            } catch (FileNotFoundException e) {
+                userFileService.deleteFile(userFile.getFileName());
+                return "文件已删除!";
+            }
             // 附件下载
             response.setHeader("content-disposition", openStyle + ";filename=" + URLEncoder.encode(userFile.getFileName(), "UTF-8"));
             // 获取响应response输出流
@@ -328,6 +336,8 @@ public class FileUploadOrDownloadController {
             if (openStyle.equals("attachment") && "下载成功".equals(s)) {
                 userFile.setDownloadCounts(userFile.getDownloadCounts() + 1);
                 userFileService.update(userFile);
+            } else {
+                userFileService.falseDeleteFile(userFile.getFileName());
             }
             return s;
         }

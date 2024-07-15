@@ -23,7 +23,7 @@ public interface UserFileDao {
      * @param offset
      * @return: java.util.List<com.aiyuns.tinkerplay.Entity.UserFile>
      */
-    List<UserFile> queryByUserId(Integer id, Integer begin, int offset);
+    List<UserFile> queryByUserId(Integer id, int deleted, Integer begin, int offset);
 
     /***
      * @Author: aiYunS
@@ -75,6 +75,16 @@ public interface UserFileDao {
       * @return: void
       */
      void deleteFile(String objectName);
+
+    /***
+     * @Author: aiYunS
+     * @Description: 逻辑删除文件
+     * @Date: 2023年6月8日, 0008 下午 3:45:38
+     * @Param:
+     * @param objectName
+     * @return: void
+     */
+    void falseDeleteFile(String objectName);
 
     /***
      * @Author: aiYunS
