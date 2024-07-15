@@ -8,6 +8,7 @@ import com.aiyuns.tinkerplay.Rabbitmq.CancelOrderSender;
 import com.aiyuns.tinkerplay.Controller.Service.UserService;
 import com.aiyuns.tinkerplay.Utils.*;
 import com.baomidou.dynamic.datasource.annotation.DS;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,13 @@ import java.util.concurrent.Future;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Resource
     UserDao UserDao;
 
     @Autowired
     private CancelOrderSender cancelOrderSender;
 
     //测试多数据源配置注解@DS
-
     // @DS("slave_1")
     // @Async("asyncServiceExecutor") //开启这里会导致controller层返回为null;
     @Override

@@ -48,7 +48,7 @@ public class GloVeModelLoaderDemo {
     }
 
     public static void main(String[] args) {
-        String filePath = "E:\\aiyuns\\glove.6B.50d.txt";
+        String filePath = "/Users/yuxinbai/aiyuns/glove.6B.50d.txt";
         GloVeModelLoaderDemo loader = new GloVeModelLoaderDemo(filePath);
 
         // Example usage:

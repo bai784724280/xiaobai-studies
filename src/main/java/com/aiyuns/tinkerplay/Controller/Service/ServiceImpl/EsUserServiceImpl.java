@@ -1,7 +1,8 @@
-package com.aiyuns.tinkerplay.Controller.Elasticsearch;
+package com.aiyuns.tinkerplay.Controller.Service.ServiceImpl;
 
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.EsEntity.EsUser;
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository.EsUserRepository;
+import com.aiyuns.tinkerplay.Controller.Service.EsUserService;
+import com.aiyuns.tinkerplay.Entity.EsUser;
+import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.EsUserRepository;
 import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.UserDao;
 import jakarta.annotation.Resource;
 import org.elasticsearch.index.query.MatchAllQueryBuilder;
@@ -27,7 +28,7 @@ import java.util.Optional;
  * @Description: es的service实现层
  */
 @Service
-public class EsUserServiceImpl implements EsUserService{
+public class EsUserServiceImpl implements EsUserService {
 
     private final EsUserRepository esUserRepository;
 

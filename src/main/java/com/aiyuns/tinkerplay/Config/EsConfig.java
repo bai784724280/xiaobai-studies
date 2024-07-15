@@ -3,7 +3,7 @@ package com.aiyuns.tinkerplay.Config;
 import co.elastic.clients.json.JsonpMapper;
 import co.elastic.clients.transport.rest_client.RestClientOptions;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository.EsUserRepository;
+import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.EsUserRepository;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.ObjectProvider;
@@ -23,7 +23,7 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
  * @Description: Elasticsearch配置类
  */
 @Configuration
-@EnableJpaRepositories("com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository")
+@EnableJpaRepositories("com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository")
 public class EsConfig {
 
     @Value("${spring.elasticsearch.rest.uris}")

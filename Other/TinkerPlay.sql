@@ -123,6 +123,7 @@ CREATE TABLE `files`  (
   `download_counts` int(6) NULL DEFAULT NULL,
   `upload_time` datetime(0) NULL DEFAULT NULL,
   `user_id` int(11) NOT NULL,
+  deleted   char default '1' not null comment '删除标识',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `t_files_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT

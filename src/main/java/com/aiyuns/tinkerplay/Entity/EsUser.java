@@ -1,4 +1,4 @@
-package com.aiyuns.tinkerplay.Controller.Elasticsearch.EsEntity;
+package com.aiyuns.tinkerplay.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;

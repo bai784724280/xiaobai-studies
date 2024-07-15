@@ -1,6 +1,6 @@
 package com.aiyuns.tinkerplay.Controller.Service.ServiceImpl;
 
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository.AccountRepository;
+import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.AccountRepository;
 import com.aiyuns.tinkerplay.Controller.Service.TransferService;
 import com.aiyuns.tinkerplay.Entity.Account;
 import com.baomidou.dynamic.datasource.annotation.DS;

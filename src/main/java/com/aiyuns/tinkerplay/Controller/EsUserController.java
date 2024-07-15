@@ -1,8 +1,9 @@
-package com.aiyuns.tinkerplay.Controller.Elasticsearch;
+package com.aiyuns.tinkerplay.Controller;
 
 import com.aiyuns.tinkerplay.Common.CommonPage;
 import com.aiyuns.tinkerplay.Common.CommonResult;
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.EsEntity.EsUser;
+import com.aiyuns.tinkerplay.Entity.EsUser;
+import com.aiyuns.tinkerplay.Controller.Service.EsUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;

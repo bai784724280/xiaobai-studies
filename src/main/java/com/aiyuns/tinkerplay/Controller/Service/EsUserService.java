@@ -1,6 +1,6 @@
-package com.aiyuns.tinkerplay.Controller.Elasticsearch;
+package com.aiyuns.tinkerplay.Controller.Service;
 
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.EsEntity.EsUser;
+import com.aiyuns.tinkerplay.Entity.EsUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.elasticsearch.core.SearchHits;
 
