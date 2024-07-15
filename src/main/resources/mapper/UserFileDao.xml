@@ -24,7 +24,10 @@
     <!-- 根据用户id查询文件数量-->
     <select id="queryFileCount" parameterType="Integer" resultType="Integer">
         select count(*) from files
-        where user_id = #{id};
+        where user_id = #{id}
+        <if test="deleted != null and deleted != ''">
+            and deleted = #{deleted};
+        </if>
     </select>
 
     <!-- 上传文件-->

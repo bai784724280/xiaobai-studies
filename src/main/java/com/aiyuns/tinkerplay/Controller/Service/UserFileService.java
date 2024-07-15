@@ -13,10 +13,10 @@ import java.util.List;
 public interface UserFileService {
 
     // 根据用户id获得文件列表
-    List<UserFile> queryByUserId(Integer id, int deleted, Integer page, Integer limit);
+    List<UserFile> queryByUserId(Integer id, String deleted, Integer page, Integer limit);
 
     // 根据用户id获得文件数
-    int queryFileCounts(Integer id);
+    int queryFileCounts(Integer id, String deleted);
 
     // 文件上传,保存到数据库
     @Async

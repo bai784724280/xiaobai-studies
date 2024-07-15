@@ -252,15 +252,16 @@ public class FileUploadOrDownloadController {
     @PostMapping("queryAllFileById")
     @ResponseBody
     public Map<String, Object> queryAllFileById(HttpSession session, HttpServletRequest request){
-        int deleted = request.getParameter("deleted") == null ? 1 : Integer.parseInt(request.getParameter("deleted"));
-        int page = Integer.parseInt(request.getParameter("page") == null? "1":request.getParameter("page"));
-        int limit = Integer.parseInt(request.getParameter("limit") == null? "100":request.getParameter("limit"));
-        User user = (User) (session.getAttribute("user") == null? new User(1):session.getAttribute("user"));
-        List<UserFile> files = userFileService.queryByUserId(user.getId(), deleted, page, limit);
+        String deleted = request.getParameter("deleted") == null ? null : request.getParameter("deleted");
+        int page = Integer.parseInt(request.getParameter("page") == null ? "1":request.getParameter("page"));
+        int limit = Integer.parseInt(request.getParameter("limit") == null ? "100":request.getParameter("limit"));
+        int uid = request.getParameter("uid") == null ? 1 : Integer.parseInt(request.getParameter("uid"));
+        //User user = (User) (session.getAttribute("uid") == null? new User(1):session.getAttribute("uid"));
+        List<UserFile> files = userFileService.queryByUserId(uid, deleted, page, limit);
 
         Map<String, Object> res = new HashMap<>();
         res.put("code", 0);
-        res.put("count", userFileService.queryFileCounts(user.getId()));
+        res.put("count", userFileService.queryFileCounts(uid, deleted));
         res.put("data", files);
         return res;
     }

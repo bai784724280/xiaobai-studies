@@ -28,7 +28,7 @@ public class UserFileServiceImpl implements UserFileService{
      * @return
      */
     @Override
-    public List<UserFile> queryByUserId(Integer id, int deleted, Integer page, Integer limit){
+    public List<UserFile> queryByUserId(Integer id, String deleted, Integer page, Integer limit){
         // page表示第几页，limit表示每页显示多少行数据
         int begin = (page-1)*limit;   // 该计算方法获得开始的位置
         int offset = limit;
@@ -41,8 +41,8 @@ public class UserFileServiceImpl implements UserFileService{
      * @return
      */
     @Override
-    public int queryFileCounts(Integer id){
-        return userFileDao.queryFileCount(id);
+    public int queryFileCounts(Integer id, String deleted){
+        return userFileDao.queryFileCount(id, deleted);
     }
 
     // 文件上传,信息保存到数据库

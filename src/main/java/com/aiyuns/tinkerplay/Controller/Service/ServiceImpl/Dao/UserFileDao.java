@@ -23,7 +23,7 @@ public interface UserFileDao {
      * @param offset
      * @return: java.util.List<com.aiyuns.tinkerplay.Entity.UserFile>
      */
-    List<UserFile> queryByUserId(Integer id, int deleted, Integer begin, int offset);
+    List<UserFile> queryByUserId(Integer id, String deleted, Integer begin, int offset);
 
     /***
      * @Author: aiYunS
@@ -33,7 +33,7 @@ public interface UserFileDao {
      * @param id
      * @return: int
      */
-    int queryFileCount(Integer id);
+    int queryFileCount(Integer id, String deleted);
 
     /***
      * @Author: aiYunS
