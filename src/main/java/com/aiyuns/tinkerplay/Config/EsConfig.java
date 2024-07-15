@@ -3,7 +3,7 @@ package com.aiyuns.tinkerplay.Config;
 import co.elastic.clients.json.JsonpMapper;
 import co.elastic.clients.transport.rest_client.RestClientOptions;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository.EsUserRepository;
+import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.EsUserRepository;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.ObjectProvider;

@@ -11,7 +11,7 @@ import java.util.List;
  * @Description: 定时任务DAO层
  */
 @Mapper
-public interface ISysJobRepository {
+public interface ISysJobDao {
 
     // 新增定时任务
     boolean addSysJob(SysJobPO sysJobPO);

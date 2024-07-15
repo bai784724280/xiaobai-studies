@@ -1,6 +1,6 @@
-package com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository;
+package com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository;
 
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.EsEntity.EsUser;
+import com.aiyuns.tinkerplay.Entity.EsUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;

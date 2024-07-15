@@ -1,4 +1,4 @@
-package com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository;
+package com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository;
 
 import com.aiyuns.tinkerplay.Entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;

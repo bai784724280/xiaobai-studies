@@ -1,7 +1,7 @@
 package com.aiyuns.tinkerplay.Listener;
 
 import com.aiyuns.tinkerplay.Config.FlinkCDCConfig;
-import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.ISysJobRepository;
+import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.ISysJobDao;
 import com.aiyuns.tinkerplay.Entity.SysJobPO;
 import com.aiyuns.tinkerplay.Flink.DataChangeInfo;
 import com.aiyuns.tinkerplay.Flink.DataChangeSink;
@@ -40,7 +40,7 @@ public class MysqlEventListener implements ApplicationRunner{
     private static final Logger logger = LoggerFactory.getLogger(MysqlEventListener.class);
 
     @Autowired
-    private ISysJobRepository sysJobRepository;
+    private ISysJobDao sysJobDao;
     @Autowired
     private CronTaskRegistrar cronTaskRegistrar;
     /**
@@ -99,7 +99,7 @@ public class MysqlEventListener implements ApplicationRunner{
     public void scanTimedTask() {
         // 初始加载数据库里状态为正常的定时任务
         // List<SysJobPO> jobList = sysJobRepository.getSysJobListByStatus(SysJobStatus.NORMAL.ordinal());
-        List<SysJobPO> jobList = sysJobRepository.getSysJobListByStatus(1);
+        List<SysJobPO> jobList = sysJobDao.getSysJobListByStatus(1);
         // 程序启动时,一次性加载数据库里面状态为1的正常的定时任务
         if (CollectionUtils.isNotEmpty(jobList)) {
             for (SysJobPO job : jobList) {

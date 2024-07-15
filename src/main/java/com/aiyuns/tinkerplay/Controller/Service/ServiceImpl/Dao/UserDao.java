@@ -1,7 +1,7 @@
 package com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao;
 
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.EsEntity.EsUser;
-import com.aiyuns.tinkerplay.Controller.Elasticsearch.Repository.EsUserRepository;
+import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.EsUserRepository;
+import com.aiyuns.tinkerplay.Entity.EsUser;
 import com.aiyuns.tinkerplay.Entity.Projbase;
 import com.aiyuns.tinkerplay.Entity.User;
 import com.aiyuns.tinkerplay.Utils.RowConvertColUtil;
