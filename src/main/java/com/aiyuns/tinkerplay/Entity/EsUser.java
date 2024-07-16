@@ -21,38 +21,49 @@ import java.util.Date;
 public class EsUser implements Serializable {
 
     @Id
+    @Schema(description = "用户ID")
     private Long id;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "姓氏")
     private String firstName;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "姓名")
     private String name;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "名字")
     private String lastName;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "地址")
     private String address;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "性别")
     private String sex;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Schema(description = "出生日期")
     // @Field(analyzer = "ik_max_word", type = FieldType.Date)
     private Date birthday;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "证件号码")
     private String CARD;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "手机号码")
     private String PHONE;
 
     @Field(analyzer = "ik_max_word", type = FieldType.Text)
+    @Schema(description = "电子邮件")
     private String EMAIL;
 
     @Field(analyzer = "ik_max_word",type = FieldType.Text)
+    @Schema(description = "关键字")
     private String keywords;
 
     public Long getId() {

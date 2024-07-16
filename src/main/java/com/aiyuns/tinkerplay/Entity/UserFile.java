@@ -21,13 +21,25 @@ import java.util.Date;
 @ToString
 @Accessors(chain = true) //为生成的设置方法返回当前对象，以支持链式调用。
 public class UserFile {
+
+    @Schema(description = "文件ID")
     private Integer id;
+    @Schema(description = "文件名称")
     private String fileName;
+    @Schema(description = "文件后缀类型")
     private String ext;
+    @Schema(description = "文件路径")
     private String path;
+    @Schema(description = "文件大小")
     private long size;
+    @Schema(description = "文件类型")
     private String type;
+    @Schema(description = "下载次数")
     private Integer downloadCounts;
+    @Schema(description = "上传时间")
     private Date uploadTime;
+    @Schema(description = "用户id")
     private Integer userId;
+    @Schema(description = "删除标识")
+    private String deleted;
 }

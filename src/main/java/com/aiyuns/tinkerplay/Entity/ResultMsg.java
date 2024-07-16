@@ -11,13 +11,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(name = "结果信息封装实体类")
 public class ResultMsg {
 
+    @Schema(description = "状态")
     private String status;
+    @Schema(description = "异常信息")
     private String msg;
+    @Schema(description = "数据")
     private String data;
+    @Schema(description = "状态码")
     private String code;
+    @Schema(description = "堆栈信息")
     private String stackTrace;
+    @Schema(description = "请求ID")
     private String requestId;
+    @Schema(description = "成功标识")
     private String success;
+    @Schema(description = "信息")
     private String message;
 
     public ResultMsg(){};

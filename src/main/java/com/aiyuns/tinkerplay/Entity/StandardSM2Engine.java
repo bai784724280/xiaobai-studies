@@ -40,13 +40,19 @@ import org.bouncycastle.util.Pack;
 @Schema(name = "SM2Engine类")
 public class StandardSM2Engine {
 
+    @Schema(description = "摘要")
     private final Digest digest;
+    @Schema(description = "模型")
     private final Mode mode;
-
+    @Schema(description = "加密标识")
     private boolean forEncryption;
+    @Schema(description = "加密密钥")
     private ECKeyParameters ecKey;
+    @Schema(description = "加密参数")
     private ECDomainParameters ecParams;
+    @Schema(description = "加密长度")
     private int curveLength;
+    @Schema(description = "加密强随机数")
     private SecureRandom random;
 
     public StandardSM2Engine() {

@@ -16,9 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TokenAccess {
 
+    @Schema(description = "员工姓名")
     private String staff_name;
+    @Schema(description = "用户ID")
     private String user_id;
+    @Schema(description = "用户姓名")
     private String username;
+    @Schema(description = "状态")
     private Integer status;
 
     public String getStaff_name() {

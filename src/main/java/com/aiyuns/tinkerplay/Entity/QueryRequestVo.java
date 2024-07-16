@@ -22,44 +22,33 @@ import java.util.Date;
 @AllArgsConstructor
 public class QueryRequestVo {
 
-    //对象
+    @Schema(description = "用户对象")
     private User user;
-
-    //用户id
+    @Schema(description = "用户id")
     private int id;
-
-    //用户名字
+    @Schema(description = "用户名字")
     private String name;
-
-    //开始时间
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Schema(description = "开始时间")
     private Date startTime;
-
-    //结束时间
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Schema(description = "结束时间")
     private Date endTime;
-
-    //时间区间
+    @Schema(description = "时间区间")
     private String qj;
-
-    //超时
+    @Schema(description = "超时时间")
     private String timeOut;
-
-    //行政区编码
+    @Schema(description = "行政区编码")
     private String xzqbm;
-
-    //行政区级别
+    @Schema(description = "行政区级别")
     private String xzqjib;
-
-    //是否查询列表
+    @Schema(description = "是否查询列表")
     private boolean lists;
-
-    //查询页
+    @Schema(description = "查询页码")
     private int start;
-
-    //每页大小
+    @Schema(description = "每页大小")
     private int size;
 
     public Date getStartTime() {

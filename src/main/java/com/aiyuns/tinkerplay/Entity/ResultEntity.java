@@ -12,9 +12,12 @@ import lombok.Data;
 @Data
 public class ResultEntity<T> {
 
-    private String result; //结果
-    private String message;//失败信息
-    private T data;// 返回数据
+    @Schema(description = "结果")
+    private String result;
+    @Schema(description = "失败信息")
+    private String message;
+    @Schema(description = "返回数据")
+    private T data;
 
     private static final String SUCCESS="SUCCESS";
     private static final String FAILED="FAILED";

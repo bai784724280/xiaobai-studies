@@ -8,12 +8,15 @@ import lombok.Data;
  * @Date: 2022-9-15 上午 10:08
  * @Description: 客户端信息
  */
-@Schema(name = "PC设备信息实体类")
+@Schema(name = "设备信息实体类")
 @Data
 public class ClientMsg {
 
+    @Schema(description = "客户端类型")
     private String ClientType;
+    @Schema(description = "系统类型")
     private String SystemType;
+    @Schema(description = "浏览器类型")
     private String BrowserType;
 
     public String getClientType() {

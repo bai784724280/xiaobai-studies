@@ -30,34 +30,42 @@ public class User implements Serializable {
     private static final long serialVersionUID = 4359709211352400087L;
 
     @ExcelProperty("编号")
+    @Schema(description = "编号")
     private Integer id;
 
     @ExcelProperty("姓名")
     @PrivacyEncrypt(type = PrivacyTypeEnum.CUSTOMER, prefixNoMaskLen = 1, suffixNoMaskLen = 1, symbol = "$")
+    @Schema(description = "姓名")
     private String username;
 
     @ExcelProperty("地址")
+    @Schema(description = "地址")
     private String address;
 
     @ExcelProperty("性别")
+    @Schema(description = "性别")
     private String sex;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@ExcelIgnore  //解决Date转换出现的NoSuchMethodError异常 过略该类型的属性不导出
     @ExcelProperty(value = "出生年月日", converter = DateConverterProperties.class)
+    @Schema(description = "出生年月日")
     private Date birthday;
 
     @ExcelProperty("身份证")
     @PrivacyEncrypt(type = PrivacyTypeEnum.ID_CARD)
+    @Schema(description = "身份证")
     private String ID_CARD;
 
     @ExcelProperty("电话")
     @PrivacyEncrypt(type = PrivacyTypeEnum.PHONE)
+    @Schema(description = "电话")
     private String PHONE;
 
     @ExcelProperty("邮箱")
     @PrivacyEncrypt(type = PrivacyTypeEnum.EMAIL)
+    @Schema(description = "邮箱")
     private String EMAIL;
 
     // 测试用

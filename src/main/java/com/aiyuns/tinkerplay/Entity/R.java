@@ -15,8 +15,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class R {
+
+    @Schema(description = "状态吗")
     private Integer code;
+    @Schema(description = "信息")
     private String msg;
+    @Schema(description = "数据")
     private Object data;
 
     public static R ok(String msg){
