@@ -1,6 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Date;
  * @Date: 2021/9/8 下午 08:20
  * @Description: 包装查询请求
  */
+@Schema(name = "查询请求封装实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

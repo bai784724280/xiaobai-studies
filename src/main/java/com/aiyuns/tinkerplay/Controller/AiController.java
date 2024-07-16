@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
  * @Description: ChatGPT
  */
 @Controller
-@Tag(name = "AiController", description = "ChatGPT")
+@Tag(name = "AiController", description = "ChatGPT模块")
 @RequestMapping("/AI")
 public class AiController {
 

@@ -24,7 +24,7 @@ import java.util.concurrent.*;
 
 @RestController
 @RequestMapping(value ="ProjbaseController",produces = "application/json;charset=UTF-8")
-@Tag(name = "ProjbaseController", description = "分页模块")
+@Tag(name = "ProjbaseController", description = "分页查询模块")
 public class ProjbaseController {
 
     // 此处控制器层直接注入dao层,没有注入业务层

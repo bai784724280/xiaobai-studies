@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value ="AccessControl",produces = "application/json;charset=UTF-8")
-@Tag(name = "TokenAccessController", description = "解析Token校验权限模块")
+@Tag(name = "TokenAccessController", description = "Token校验模块")
 public class TokenAccessController {
 
     @Autowired

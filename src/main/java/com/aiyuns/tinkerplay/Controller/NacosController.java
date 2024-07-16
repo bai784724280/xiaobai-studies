@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RefreshScope // 动态刷新
-@Tag(name = "NacosController", description = "Nacos")
+@Tag(name = "NacosController", description = "Nacos配置中心模块")
 @RequestMapping("/nacos")
 public class NacosController {
 

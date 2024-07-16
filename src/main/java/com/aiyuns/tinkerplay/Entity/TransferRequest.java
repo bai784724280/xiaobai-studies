@@ -1,11 +1,13 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotEmpty;
 
 import java.math.BigDecimal;
 
+@Schema(name = "转账请求封装实体类")
 public class TransferRequest {
     @NotEmpty
     private String fromAccountNumber;

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Schema(name = "账户实体类")
+@Schema(name = "账户信息实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

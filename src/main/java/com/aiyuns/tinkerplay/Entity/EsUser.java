@@ -1,6 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -15,6 +16,7 @@ import java.util.Date;
  * @Date: 2023年3月16日, 0016 下午 12:52:12
  * @Description: 搜索中的人员信息
  */
+@Schema(name = "Es用户信息实体类")
 @Document(indexName = "user")
 public class EsUser implements Serializable {
 

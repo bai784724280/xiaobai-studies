@@ -21,7 +21,7 @@ import java.util.Date;
  * @Description: user实体类
  */
 
-@Schema(name = "用户实体类")
+@Schema(name = "用户信息实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

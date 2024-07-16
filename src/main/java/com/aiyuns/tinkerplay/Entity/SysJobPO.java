@@ -1,5 +1,6 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.Date;
  * @Date: 2022-10-10 上午 11:24
  * @Description: 定时任务实体类
  */
-
+@Schema(name = "系统定时任务封装实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

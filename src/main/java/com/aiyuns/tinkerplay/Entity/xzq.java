@@ -1,10 +1,13 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * @Author: aiYunS
  * @Date: 2021/6/30 下午 02:25
  * @Description: 行政区实体类
  */
+@Schema(name = "行政区信息实体类")
 public class xzq {
 
     int bsm;

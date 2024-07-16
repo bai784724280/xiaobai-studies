@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Integer;
@@ -36,6 +37,7 @@ import org.bouncycastle.util.Pack;
  * @Description: 自定义SM2Engine类，对加密解密数据进行了ASN.1编码
  */
 
+@Schema(name = "SM2Engine类")
 public class StandardSM2Engine {
 
     private final Digest digest;

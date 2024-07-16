@@ -1,6 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.Date;
  * @Date: 2022-9-5 上午 09:27
  * @Description: projbase表结构
  */
+@Schema(name = "信息封装实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

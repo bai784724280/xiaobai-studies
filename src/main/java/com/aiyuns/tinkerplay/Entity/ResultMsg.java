@@ -1,10 +1,14 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * @Author: aiYunS
  * @Date: 2022-9-24 下午 09:28
  * @Description: 返回结果信息实体类
  */
+
+@Schema(name = "结果信息封装实体类")
 public class ResultMsg {
 
     private String status;

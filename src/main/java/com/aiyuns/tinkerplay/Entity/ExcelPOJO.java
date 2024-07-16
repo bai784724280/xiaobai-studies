@@ -1,6 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import com.aiyuns.tinkerplay.CustomAnnotations.excelRescoure;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @Author: aiYunS
@@ -12,6 +13,7 @@ import com.aiyuns.tinkerplay.CustomAnnotations.excelRescoure;
  *  * 成员变量目前只允许String,Double,Interge,Float
  */
 
+@Schema(name = "Excel导出封装实体类")
 public class ExcelPOJO {
 
     @excelRescoure(value = "业务号")

@@ -49,7 +49,7 @@ import java.util.*;
  * @Description: 文件上传下载
  */
 @RestController
-@Tag(name = "FileUploadOrDownloadController", description = "文件上传下载模块")
+@Tag(name = "FileUploadOrDownloadController", description = "FileUploadOrDownload模块")
 public class FileUploadOrDownloadController {
 
     @Autowired
