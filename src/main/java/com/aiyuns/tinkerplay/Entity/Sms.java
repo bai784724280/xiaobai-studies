@@ -16,9 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Sms {
 
+    @Schema(description = "手机号码")
     private String[] phoneNumbers;
+    @Schema(description = "模板ID")
     private Integer templateId;
+    @Schema(description = "sms标识")
     private String smsSign;
+    @Schema(description = "参数")
     private String[] params;
 
 }

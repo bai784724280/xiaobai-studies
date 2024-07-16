@@ -1,21 +1,34 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * @Author: aiYunS
  * @Date: 2021/6/30 下午 02:25
  * @Description: 行政区实体类
  */
+@Schema(name = "行政区信息实体类")
 public class xzq {
 
+    @Schema(description = "标识码")
     int bsm;
+    @Schema(description = "sss")
     String sss;
+    @Schema(description = "ssx")
     String ssx;
+    @Schema(description = "行政区编码")
     String bzxzqbm;
+    @Schema(description = "不动产行政区编码")
     String bdcxzqbm;
+    @Schema(description = "创建人")
     String createby;
+    @Schema(description = "创建时间")
     String createtime;
+    @Schema(description = "编辑人")
     String editby;
+    @Schema(description = "编辑时间")
     String edittime;
+    @Schema(description = "查询地区编码")
     String deptcode;
 
     public int getBsm() {

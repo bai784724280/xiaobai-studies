@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Schema(name = "账户实体类")
+@Schema(name = "账户信息实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,8 +20,11 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "账户ID")
     private Long id;
+    @Schema(description = "账户号码")
     private String accountNumber;
+    @Schema(description = "转账金额")
     private BigDecimal balance;
     
 }

@@ -1,5 +1,6 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,46 +12,29 @@ import java.util.Date;
  * @Date: 2022-10-10 上午 11:24
  * @Description: 定时任务实体类
  */
-
+@Schema(name = "系统定时任务封装实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SysJobPO {
-    /**
-     * 任务ID
-     */
+
+    @Schema(description = "任务ID")
     private Integer jobId;
-    /**
-     * bean名称
-     */
+    @Schema(description = "bean名称")
     private String beanName;
-    /**
-     * 方法名称
-     */
+    @Schema(description = "方法名称")
     private String methodName;
-    /**
-     * 方法参数
-     */
+    @Schema(description = "方法参数")
     private String methodParams;
-    /**
-     * cron表达式
-     */
+    @Schema(description = "cron表达式")
     private String cronExpression;
-    /**
-     * 状态（1正常 0暂停）
-     */
+    @Schema(description = "状态")
     private Integer jobStatus;
-    /**
-     * 备注
-     */
+    @Schema(description = "备注")
     private String remark;
-    /**
-     * 创建时间
-     */
+    @Schema(description = "创建时间")
     private Date createTime;
-    /**
-     * 更新时间
-     */
+    @Schema(description = "更新时间")
     private Date updateTime;
 
     public Integer getJobId() {

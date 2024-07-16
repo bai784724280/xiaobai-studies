@@ -21,7 +21,7 @@ import java.util.Optional;
  * @Description: ES的Controller
  */
 @Controller
-@Tag(name = "EsUserController", description = "ES的Controller")
+@Tag(name = "EsUserController", description = "Elasticsearch模块")
 @RequestMapping("/esUser")
 public class EsUserController {
     @Resource

@@ -1,6 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import com.aiyuns.tinkerplay.CustomAnnotations.excelRescoure;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * @Author: aiYunS
@@ -12,23 +13,32 @@ import com.aiyuns.tinkerplay.CustomAnnotations.excelRescoure;
  *  * 成员变量目前只允许String,Double,Interge,Float
  */
 
+@Schema(name = "Excel导出封装实体类")
 public class ExcelPOJO {
 
     @excelRescoure(value = "业务号")
+    @Schema(description = "业务号")
     private String ywh;
     @excelRescoure(value = "权利标识码")
+    @Schema(description = "权利标识码")
     private String qlbsm;
     @excelRescoure(value = "区县代码")
+    @Schema(description = "区县代码")
     private String qxdm;
     @excelRescoure(value = "服务器编码")
+    @Schema(description = "服务器编码")
     private String fwqbm;
     @excelRescoure(value = "抵押金额(万元)")
+    @Schema(description = "抵押金额(万元)")
     private String dyje;
     @excelRescoure(value = "登簿时间")
+    @Schema(description = "登簿时间")
     private String dbsj;
     @excelRescoure(value = "房屋面积㎡")
+    @Schema(description = "房屋面积㎡")
     private String fwmj;
     @excelRescoure(value = "土地使用权面积㎡")
+    @Schema(description = "土地使用权面积㎡")
     private String tdsyqmj;
 
     public ExcelPOJO() {}

@@ -1,6 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,30 +11,41 @@ import lombok.NoArgsConstructor;
  * @Date: 2022-9-5 上午 09:27
  * @Description: projbaseException表结构
  */
+@Schema(name = "错误信息封装实体类")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjbaseException {
 
     @ExcelProperty("projId")
+    @Schema(description = "流水号")
     private String projId;
     @ExcelProperty("cjsj")
+    @Schema(description = "创建时间")
     private String cjsj;
     @ExcelProperty("projectName")
+    @Schema(description = "事项名称")
     private String projectName;
     @ExcelProperty("applyName")
+    @Schema(description = "创建人")
     private String applyName;
     @ExcelProperty("applyCardNo")
+    @Schema(description = "创建人证件号码")
     private String applyCardNo;
     @ExcelProperty("qxdm")
+    @Schema(description = "区县代码")
     private String qxdm;
     @ExcelProperty("recvUserName")
+    @Schema(description = "账号名称")
     private String recvUserName;
     @ExcelProperty("recvDeptCode")
+    @Schema(description = "查询区域代码")
     private String recvDeptCode;
     @ExcelProperty("recvUserId")
+    @Schema(description = "账号用户ID")
     private String recvUserId;
     @ExcelProperty("faceValidationResult")
+    @Schema(description = "人脸识别结果")
     private String faceValidationResult;
 
     public String getProjId() {

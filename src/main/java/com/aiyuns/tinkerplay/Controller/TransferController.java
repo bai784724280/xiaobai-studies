@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/transferController")
-@Tag(name = "TransferController", description = "金融模块")
+@Tag(name = "TransferController", description = "模拟金融模块")
 public class TransferController {
 
     @Resource

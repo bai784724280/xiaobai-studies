@@ -1,5 +1,6 @@
 package com.aiyuns.tinkerplay.Entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,17 @@ import lombok.NoArgsConstructor;
  * @Date: 2022-9-25 上午 11:05
  * @Description:
  */
+@Schema(name = "返回信息封装实体类")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class R {
+
+    @Schema(description = "状态吗")
     private Integer code;
+    @Schema(description = "信息")
     private String msg;
+    @Schema(description = "数据")
     private Object data;
 
     public static R ok(String msg){
