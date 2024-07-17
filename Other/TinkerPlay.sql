@@ -27,7 +27,8 @@ CREATE TABLE `account`  (
   `money` double NULL DEFAULT NULL,
   `account_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '账户号码',
   `balance` decimal(10, 0) NOT NULL DEFAULT 0 COMMENT '金额',
-  PRIMARY KEY (`id`) USING BTREE
+  `version` mediumtext     NOT NULL COMMENT '版本号',
+ PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
@@ -123,8 +124,8 @@ CREATE TABLE `files`  (
   `download_counts` int(6) NULL DEFAULT NULL,
   `upload_time` datetime(0) NULL DEFAULT NULL,
   `user_id` int(11) NOT NULL,
-  deleted   char default '1' not null comment '删除标识',
-  PRIMARY KEY (`id`) USING BTREE,
+  `deleted` char DEFAULT '1' NOT NULL COMMENT '删除标识',
+ PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `t_files_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;

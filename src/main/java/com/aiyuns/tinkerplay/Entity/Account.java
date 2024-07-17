@@ -1,10 +1,7 @@
 package com.aiyuns.tinkerplay.Entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +23,8 @@ public class Account {
     private String accountNumber;
     @Schema(description = "转账金额")
     private BigDecimal balance;
+    //@Version //乐观锁
+    @Schema(description = "版本号")
+    private Long version;
     
 }
