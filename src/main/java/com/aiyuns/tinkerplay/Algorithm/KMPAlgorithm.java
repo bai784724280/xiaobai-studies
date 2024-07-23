@@ -71,7 +71,8 @@ public class KMPAlgorithm {
             if (s1[i] == s2[j]) {
                 i++;
                 j++;
-            } else { // 没有匹配成功
+            } else {
+                // 没有匹配成功
                 i = i - (j - 1);
                 // 第0个没找到,i = 0 - (0 - 1),i = 1
                 // 第1个没找到,i = 1 - (0 - 1),i = 2
@@ -86,7 +87,8 @@ public class KMPAlgorithm {
 
     private static int[] kmpNext(String dest) {
         int[] next = new int[dest.length()];
-        next[0] = 0; // 如果字符串长度为1，部分匹配值就是0
+        // 如果字符串长度为1，部分匹配值就是0
+        next[0] = 0;
         for (int i = 1, j = 0; i < dest.length(); i++) {
             // 当dest.charAt(i) != dest.charAt(j)，我们需要从next[j-1]获取新的j
             // 直到我们发现有dest.charAt(i) == dest.charAt(j)成立才退出
@@ -97,7 +99,8 @@ public class KMPAlgorithm {
             if (dest.charAt(i) == dest.charAt(j)) {
                 j++;
             }
-            next[i] = j; // 不是next[j] = j;
+            // 不是next[j] = j;
+            next[i] = j;
         }
         return next;
     }

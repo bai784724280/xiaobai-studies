@@ -58,6 +58,8 @@ class Z extends F{
     public static void ZiMethmod() {
         System.out.println("子类静态方法");
     }
+
+    @Override
     public void Methmod() {
         System.out.println("子类普通方法");
     }

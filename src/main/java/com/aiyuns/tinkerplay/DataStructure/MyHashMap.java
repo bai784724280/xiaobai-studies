@@ -102,12 +102,15 @@ public class MyHashMap<K, V> {
         hashMap.put("two", 2);
         hashMap.put("three", 3);
 
-        System.out.println(hashMap.get("one"));   // Output: 1
-        System.out.println(hashMap.get("two"));   // Output: 2
-        System.out.println(hashMap.get("three")); // Output: 3
+        // Output: 1
+        System.out.println(hashMap.get("one"));
+        // Output: 2
+        System.out.println(hashMap.get("two"));
+        // Output: 3
+        System.out.println(hashMap.get("three"));
 
         hashMap.remove("two");
-
-        System.out.println(hashMap.get("two"));   // Output: null
+        // Output: null
+        System.out.println(hashMap.get("two"));
     }
 }

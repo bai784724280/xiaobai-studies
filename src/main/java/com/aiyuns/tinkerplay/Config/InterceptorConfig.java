@@ -16,6 +16,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new MyInterceptor(1.0))
-                .addPathPatterns("/**/getConfigInfo"); // 设置拦截器的匹配路径
+                // 设置拦截器的匹配路径
+                .addPathPatterns("/**/getConfigInfo");
     }
 }

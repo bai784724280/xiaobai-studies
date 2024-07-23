@@ -12,13 +12,20 @@ public class CustomThreadPool {
     public static void main(String[] args) {
         // 创建一个自定义线程池
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                2, // 核心线程数
-                4, // 最大线程数
-                10, // 空闲线程等待时间
-                TimeUnit.SECONDS, // 时间单位
-                new ArrayBlockingQueue<>(2), // 任务队列
-                new CustomThreadFactory(), // 自定义线程工厂
-                new CustomRejectionPolicy() // 自定义拒绝策略
+                // 核心线程数
+                2,
+                // 最大线程数
+                4,
+                // 空闲线程等待时间
+                10,
+                // 时间单位
+                TimeUnit.SECONDS,
+                // 任务队列
+                new ArrayBlockingQueue<>(2),
+                // 自定义线程工厂
+                new CustomThreadFactory(),
+                // 自定义拒绝策略
+                new CustomRejectionPolicy()
         );
 
         // 提交任务给线程池

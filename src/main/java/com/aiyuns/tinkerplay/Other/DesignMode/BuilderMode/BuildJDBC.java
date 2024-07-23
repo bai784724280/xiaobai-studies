@@ -10,19 +10,32 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class BuildJDBC {
 
-    private String host;//IP
-    private int port;//端口
-    private String user;//账号
-    private String password;//密码
-    private String database;//数据库
-    private Boolean useUnicode;//是否使用编码
-    private String characterEncoding;//编码格式
-    private Boolean autoReconnect;//是否自动重连
-    private Boolean failOverReadOnly;//是否连接超时
-    private int maxReconnects;//最大连接数
-    private int initialTimeout;//默认超时时长
-    private int connectTimeout;//连接超时时长
-    private int socketTimeout;//客户端从服务器读取数据的超时时长
+    //IP
+    private String host;
+    //端口
+    private int port;
+    //账号
+    private String user;
+    //密码
+    private String password;
+    //数据库
+    private String database;
+    //是否使用编码
+    private Boolean useUnicode;
+    //编码格式
+    private String characterEncoding;
+    //是否自动重连
+    private Boolean autoReconnect;
+    //是否连接超时
+    private Boolean failOverReadOnly;
+    //最大连接数
+    private int maxReconnects;
+    //默认超时时长
+    private int initialTimeout;
+    //连接超时时长
+    private int connectTimeout;
+    //客户端从服务器读取数据的超时时长
+    private int socketTimeout;
 
     public BuildJDBC(JDBCBuilder jdbcBuilder) {
         this.host = jdbcBuilder.host;

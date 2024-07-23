@@ -14,8 +14,8 @@ public class ImageBoundaryAnalysis {
         // 初始化 OpenCV
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
-        // 读取图片
-        String imagePath = "/Users/yuxinbai/Desktop/face1.jpg"; // 替换为你的图片路径
+        // 读取图片 替换为你的图片路径
+        String imagePath = "/Users/yuxinbai/Desktop/face1.jpg";
         Mat image = Imgcodecs.imread(imagePath);
 
         if (image.empty()) {

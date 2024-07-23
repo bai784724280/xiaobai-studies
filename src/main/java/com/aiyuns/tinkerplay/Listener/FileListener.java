@@ -25,43 +25,58 @@ public class FileListener extends FileAlterationListenerAdaptor {
     /**
      * 文件创建执行
      */
+    @Override
     public void onFileCreate(File file) {
         System.out.println("[新建]:" + file.getAbsolutePath());
     }
+
     /**
      * 文件创建修改
      */
+    @Override
     public void onFileChange(File file) {
         System.out.println("[修改]:" + file.getAbsolutePath());
     }
+
     /**
      * 文件删除
      */
+    @Override
     public void onFileDelete(File file) {
         System.out.println("[删除]:" + file.getAbsolutePath());
     }
+
     /**
      * 目录创建
      */
+    @Override
     public void onDirectoryCreate(File directory) {
         System.out.println("[新建]:" + directory.getAbsolutePath());
     }
+
     /**
      * 目录修改
      */
+    @Override
     public void onDirectoryChange(File directory) {
         System.out.println("[修改]:" + directory.getAbsolutePath());
     }
+
     /**
      * 目录删除
      */
+    @Override
     public void onDirectoryDelete(File directory) {
         System.out.println("[删除]:" + directory.getAbsolutePath());
     }
+
+    @Override
     public void onStart(FileAlterationObserver observer) {
         // TODO Auto-generated method stub
         super.onStart(observer);
     }
+
+    @Override
     public void onStop(FileAlterationObserver observer) {
         // TODO Auto-generated method stub
         super.onStop(observer);

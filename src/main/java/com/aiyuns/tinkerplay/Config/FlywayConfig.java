@@ -49,7 +49,8 @@ public class FlywayConfig {
         //高版本的Flywayjar包的写法一
         Flyway flyway = Flyway.configure()
                 .dataSource(dataSource)
-                .locations("db/mysql")//sql文件名称规则："V20210625.17.30__V1.0.sql"
+                //sql文件名称规则："V20210625.17.30__V1.0.sql"
+                .locations("db/mysql")
                 .baselineOnMigrate(true)
                 // 对于开发环境, 可能是多人协作开发, 很可能先 apply 了自己本地的最新 SQL 代码, 然后发现其他同事早先时候提交的 SQL 代码还没有 apply,
                 // 所以 开发环境应该设置 spring.flyway.outOfOrder=true, 这样 flyway 将能加载漏掉的老版本 SQL 文件; 而生产环境应该设置 spring.flyway.outOfOrder=false

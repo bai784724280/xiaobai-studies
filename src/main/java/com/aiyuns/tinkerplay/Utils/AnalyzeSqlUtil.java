@@ -129,6 +129,7 @@ public class AnalyzeSqlUtil {
                 return i;
             }
         }
-        return -1; // 如果未找到匹配项
+        // 如果未找到匹配项
+        return -1;
     }
 }

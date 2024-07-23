@@ -4,31 +4,39 @@ package com.aiyuns.tinkerplay.Other.Demo;
 public class BitwiseOperationsDemo {
 
     public static void main(String[] args) {
-        int a = 5;  // 0101
-        int b = 3;  // 0011
+        // 0101
+        int a = 5;
+        // 0011
+        int b = 3;
 
         // 按位与
-        int andResult = a & b; // 0001
+        // 0001
+        int andResult = a & b;
         System.out.println("a & b = " + andResult);
 
         // 按位或
-        int orResult = a | b; // 0111
+        // 0111
+        int orResult = a | b;
         System.out.println("a | b = " + orResult);
 
         // 按位异或
-        int xorResult = a ^ b; // 0110
+        // 0110
+        int xorResult = a ^ b;
         System.out.println("a ^ b = " + xorResult);
 
         // 按位取反
-        int notResult = ~a; // 1010（补码表示为 -6）
+        // 1010（补码表示为 -6）
+        int notResult = ~a;
         System.out.println("~a = " + notResult);
 
         // 左移
-        int leftShiftResult = a << 2; // 010100
+        // 010100
+        int leftShiftResult = a << 2;
         System.out.println("a << 2 = " + leftShiftResult);
 
         // 右移
-        int rightShiftResult = a >> 1; // 0010
+        // 0010
+        int rightShiftResult = a >> 1;
         System.out.println("a >> 1 = " + rightShiftResult);
 
         // 无符号右移

@@ -34,8 +34,10 @@ public class BTree {
         bTree.insert(15);
         bTree.insert(25);
 
-        System.out.println(bTree.search(5));   // Output: true
-        System.out.println(bTree.search(50));  // Output: false
+        // Output: true
+        System.out.println(bTree.search(5));
+        // Output: false
+        System.out.println(bTree.search(50));
     }
 
     public BTree(int degree) {

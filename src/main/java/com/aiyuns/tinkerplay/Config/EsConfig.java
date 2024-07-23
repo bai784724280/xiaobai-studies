@@ -35,7 +35,8 @@ public class EsConfig {
             uris = uris.replace("http://","");
         }
         final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-                .connectedTo(uris) // 指定Elasticsearch服务器的主机和端口
+                // 指定Elasticsearch服务器的主机和端口
+                .connectedTo(uris)
                 .build();
         return RestClients.create(clientConfiguration).rest();
     }

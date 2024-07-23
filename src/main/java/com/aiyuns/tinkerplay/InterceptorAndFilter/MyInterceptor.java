@@ -26,7 +26,8 @@ public class MyInterceptor implements HandlerInterceptor {
         if (rateLimiter.tryAcquire()) {
             // 允许请求继续执行
             System.out.println("流量不大, 正常执行!");
-            return true; // 返回true表示继续执行请求处理，返回false表示终止请求处理
+            // 返回true表示继续执行请求处理，返回false表示终止请求处理
+            return true;
         } else {
             // 进行限流处理，返回限流提示或其他响应
             System.out.println("流量太大, 阻断执行!");

@@ -47,9 +47,11 @@ public class Main16 {
     // 递归计算阶乘数
     public static int factorial(int n) {
         if (n == 0 || n == 1) {
-            return 1; // 0! = 1, 1! = 1
+            // 0! = 1, 1! = 1
+            return 1;
         } else {
-            return n * factorial(n - 1); // n! = n * (n-1)!
+            // n! = n * (n-1)!
+            return n * factorial(n - 1);
         }
     }
     // 字符串重新排序的情况

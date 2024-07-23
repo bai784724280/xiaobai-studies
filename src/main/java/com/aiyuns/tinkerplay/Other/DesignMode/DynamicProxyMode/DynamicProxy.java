@@ -17,6 +17,8 @@ interface MyInterface {
 
 // 实现接口的类
 class MyImplementation implements MyInterface {
+
+    @Override
     public void doSomething() {
         System.out.println("Real object is doing something.");
     }
@@ -30,6 +32,7 @@ class MyInvocationHandler implements InvocationHandler {
         this.target = target;
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 在方法调用前执行额外的操作
         System.out.println("Before method invocation");

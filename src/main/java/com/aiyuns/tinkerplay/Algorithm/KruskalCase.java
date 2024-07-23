@@ -16,14 +16,16 @@ public class KruskalCase {
     private static final int INF = Integer.MAX_VALUE;
     private char[] vertexs;
     private int[][] matrix;
-    private int edgeNums; // 边的数量
+    // 边的数量
+    private int edgeNums;
 
     public KruskalCase(char[] vertexs,int[][] matrix ) {
         this.vertexs = vertexs;
         this.matrix = matrix;
         // 统计边
         for (int i = 0; i < vertexs.length; i++) {
-            for (int j = i + 1; j < vertexs.length; j++) { // 每次少一条边，所以是i+1
+            // 每次少一条边，所以是i+1
+            for (int j = i + 1; j < vertexs.length; j++) {
                 if (this.matrix[i][j] != INF) {
                     edgeNums++;
                 }
@@ -56,13 +58,14 @@ public class KruskalCase {
         int[] ends = new int[edgeNums];
         // 创建结果数组，保存最后的最小生成树
         EData[] rets = new EData[edgeNums];
-        //
+        // 12
         EData[] edges = getEdges();
-        System.out.println("图的边的集合=" + Arrays.toString(edges) + " 共" + edges.length); // 12
+        System.out.println("图的边的集合=" + Arrays.toString(edges) + " 共" + edges.length);
 
         // 排序
         sortEdges(edges);
-        System.out.println("图的边的集合=" + Arrays.toString(edges) + " 共" + edges.length); // 12
+        // 12
+        System.out.println("图的边的集合=" + Arrays.toString(edges) + " 共" + edges.length);
 
         // 遍历edges数组，将边添加到最小生成树中时，判断是准备加入的边是否形成了回路，如果没有，就加入rets，否则不能加入
         for (int i = 0; i < edgeNums; i++) {
@@ -72,9 +75,11 @@ public class KruskalCase {
             // 获取p1、p2顶点的终点
             int m = getEnd(ends, p1);
             int n = getEnd(ends, p2);
-            if (m != n) { // 没有形成回路
-                ends[m] = n; // 设置m最小生成树中的终点，<E,F> [0,0,0,0,5,0,0,0,0,0,0]
-                //ends[n] = n;
+            // 没有形成回路
+            if (m != n) {
+                // 设置m最小生成树中的终点，<E,F> [0,0,0,0,5,0,0,0,0,0,0]
+                ends[m] = n;
+                // ends[n] = n;
                 rets[index++] = edges[i];
             }
         }
@@ -107,7 +112,8 @@ public class KruskalCase {
     private void sortEdges(EData[] edges) {
         for (int i = 0; i < edges.length - 1; i++) {
             for (int j = 0; j < edges.length - 1 - i; j++) {
-                if (edges[j].weight > edges[j+1].weight) { // 交换
+                // 交换
+                if (edges[j].weight > edges[j+1].weight) {
                     EData tmp = edges[j];
                     edges[j] = edges[j+1];
                     edges[j+1] = tmp;
@@ -126,7 +132,8 @@ public class KruskalCase {
         int index = 0;
         EData[] edges = new EData[edgeNums];
         for (int i = 0; i < vertexs.length; i++) {
-            for (int j = i+1; j < vertexs.length; j++) { // 每次少一条边，所以是i+1
+            // 每次少一条边，所以是i+1
+            for (int j = i+1; j < vertexs.length; j++) {
                 if (matrix[i][j] != INF) {
                     edges[index++] = new EData(vertexs[i], vertexs[j], matrix[i][j]);
                 }

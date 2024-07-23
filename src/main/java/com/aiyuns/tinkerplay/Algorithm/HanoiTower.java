@@ -47,7 +47,8 @@ public class HanoiTower {
         hanoiTower(3, 'A', 'B', 'C');
     }
     private static void hanoiTower(int num, char a, char b, char c) {
-        if (num == 1) { // 只有一个盘，直接解出
+        // 只有一个盘，直接解出
+        if (num == 1) {
             System.out.println("第1个盘从" + a + "->" + c);
         } else {
             // 如果n>=2的情况
