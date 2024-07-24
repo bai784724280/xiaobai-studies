@@ -43,7 +43,7 @@ public class CustomThreadPool {
         @Override
         public Thread newThread(Runnable r) {
             Thread thread = new Thread(r);
-            thread.setName("CustomThread-" + thread.getId());
+            thread.setName("CustomThread-" + thread.threadId());
             return thread;
         }
     }

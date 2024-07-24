@@ -129,7 +129,7 @@ public class MinioUtil {
             if (StringUtils.isNotBlank(originalName)) {
                 filename = originalName.substring(originalName.lastIndexOf("/")+1,originalName.length());
             }
-            response.setHeader("Content-Disposition", openStyle + ";filename=" + URLEncoder.encode(filename));
+            response.setHeader("Content-Disposition", openStyle + ";filename=" + URLEncoder.encode(filename, StandardCharsets.UTF_8));
             ServletOutputStream servletOutputStream = response.getOutputStream();
             int len;
             byte[] buffer = new byte[1024];
