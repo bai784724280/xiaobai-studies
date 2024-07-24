@@ -51,8 +51,10 @@ public class RabbitMqConfig {
     public Queue orderTtlQueue() {
         return QueueBuilder
                 .durable(QueueEnum.EXCHANGE_QUEUE_Bb.getName())
-                .withArgument("x-dead-letter-exchange", QueueEnum.EXCHANGE_QUEUE_Aa.getExchange())//到期后转发的交换机
-                .withArgument("x-dead-letter-routing-key", QueueEnum.EXCHANGE_QUEUE_Aa.getRouteKey())//到期后转发的路由键
+                // 到期后转发的交换机
+                .withArgument("x-dead-letter-exchange", QueueEnum.EXCHANGE_QUEUE_Aa.getExchange())
+                // 到期后转发的路由键
+                .withArgument("x-dead-letter-routing-key", QueueEnum.EXCHANGE_QUEUE_Aa.getRouteKey())
                 .build();
     }
 

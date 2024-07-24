@@ -38,13 +38,15 @@ public class ToInterfaceUtil {
         DEBUGGER.info("请求数据：" + data);
         try {
             URL url = new URL(path);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 打开和url之间的连接
+            // 打开和url之间的连接
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             PrintWriter out = null;
-            conn.setRequestMethod(requestMethod); // 请求方式
+            // 请求方式
+            conn.setRequestMethod(requestMethod);
             // 设置通用的请求属性
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
-            //设置传到另一个接口的格式为json
+            // 设置传到另一个接口的格式为json
             conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
             // 设置是否向httpUrlConnection输出，设置是否从httpUrlConnection读入，此外发送post请求必须设置这两个

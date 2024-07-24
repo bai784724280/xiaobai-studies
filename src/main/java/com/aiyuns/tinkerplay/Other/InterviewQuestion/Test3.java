@@ -8,8 +8,10 @@ package com.aiyuns.tinkerplay.Other.InterviewQuestion;
 
 public class Test3 {
     public static void main(String[] args) {
-        Zi zi = new Zi(); // 创建子类对象
-        zi.Fathers(); // 子类对象调用父类公有方法
+        // 创建子类对象
+        Zi zi = new Zi();
+        // 子类对象调用父类公有方法
+        zi.Fathers();
     }
 }
 

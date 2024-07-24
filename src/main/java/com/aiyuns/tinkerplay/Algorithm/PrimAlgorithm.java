@@ -88,7 +88,7 @@ class MinTree {
      * @param data   图的各个顶点的值
      * @param weight 图的邻接矩阵
      */
-    public void createGraph(MGraph graph, int verxs, char data[], int[][] weight) {
+    public void createGraph(MGraph graph, int verxs, char[] data, int[][] weight) {
         int i, j;
         for (i = 0; i < verxs; i++) {
             graph.data[i] = data[i];

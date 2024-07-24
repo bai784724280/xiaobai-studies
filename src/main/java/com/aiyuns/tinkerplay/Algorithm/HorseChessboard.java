@@ -17,7 +17,7 @@ public class HorseChessboard {
     // 棋盘的行数
     private static int Y;
     // 创建一个数组，标记棋盘的各个位置是否被访问过
-    private static boolean visited[];
+    private static boolean[] visited;
     // 使用一个属性，标记是否棋盘的所有位置都被访问
     // 如果为true,表示成功
     private static boolean finished;

@@ -8,13 +8,17 @@ package com.aiyuns.tinkerplay.Other.InterviewQuestion;
 
 public class Test4 {
     public static void main(String[] args) {
-        F x = new Z(); // 父类和子类静态代码块-->父类非静态代码块和构造方法-->子类非静态代码块和构造方法
+        // 父类和子类静态代码块-->父类非静态代码块和构造方法-->子类非静态代码块和构造方法
+        F x = new Z();
         System.out.println("=======");
-        x.Methmod(); // 子类普通方法
+        // 子类普通方法
+        x.Methmod();
         System.out.println("=======");
-        F xx = new F(); // 父类非静态代码块-->父类构造方法
+        // 父类非静态代码块-->父类构造方法
+        F xx = new F();
         System.out.println("=======");
-        xx.Methmod(); // 父类普通方法
+        // 父类普通方法
+        xx.Methmod();
     }
 }
 

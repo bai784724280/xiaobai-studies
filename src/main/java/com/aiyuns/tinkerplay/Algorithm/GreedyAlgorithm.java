@@ -38,7 +38,8 @@ public class GreedyAlgorithm {
         broadcasts.put("K4", Arrays.stream(new String[]{"上海", "天津"}).collect(Collectors.toSet()));
         broadcasts.put("K5", Arrays.stream(new String[]{"杭州", "大连"}).collect(Collectors.toSet()));
         // [上海, 天津, 北京, 广州, 深圳, 成都, 杭州, 大连]
-        List<String> allAreas = broadcasts.values().stream().flatMap(Collection::stream).distinct().collect(Collectors.toList()); // 表示所有需要覆盖的地区
+        // 表示所有需要覆盖的地区
+        List<String> allAreas = broadcasts.values().stream().flatMap(Collection::stream).distinct().collect(Collectors.toList());
         System.out.println("allAreas=" + allAreas);
         // 选择的地区集合
         List<String> selects = new ArrayList<>();
