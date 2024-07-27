@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 /**
@@ -37,7 +38,8 @@ public class ToInterfaceUtil {
         StringBuffer sb = new StringBuffer();
         DEBUGGER.info("请求数据：" + data);
         try {
-            URL url = new URL(path);
+            URI uri = new URI(path);
+            URL url = uri.toURL();
             // 打开和url之间的连接
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             PrintWriter out = null;

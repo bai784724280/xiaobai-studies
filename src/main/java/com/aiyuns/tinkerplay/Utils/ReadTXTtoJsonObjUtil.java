@@ -2,10 +2,11 @@ package com.aiyuns.tinkerplay.Utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang3.StringEscapeUtils;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Objects;
+
+import static org.apache.commons.text.StringEscapeUtils.*;
 
 /**
  * @Author: aiYunS
@@ -17,7 +18,7 @@ public class ReadTXTtoJsonObjUtil {
     private static String FILEPATH = "D:/Users/lenovo/Desktop/jsonObj.txt";
 
     public static JSONObject[] readTXTtoObj(String filePath){
-        if(filePath == "" || filePath == null){
+        if(Objects.equals(filePath, "") || filePath == null){
             filePath = ReadTXTtoJsonObjUtil.FILEPATH;
         }
         StringBuilder result = new StringBuilder();
@@ -27,7 +28,7 @@ public class ReadTXTtoJsonObjUtil {
             String s = null;
             // 使用readLine方法，一次读一行
             while((s = br.readLine())!=null){
-                result.append(System.lineSeparator()+s);
+                result.append(System.lineSeparator()).append(s);
             }
             br.close();
         }catch(Exception e){
@@ -40,7 +41,7 @@ public class ReadTXTtoJsonObjUtil {
         s = s.replaceAll("\r|\n|\\s*","");
         JSONObject jsonObject = null;
         JSONObject[] jsonObjects = null;
-        if(!"".equals(s) && s != null){
+        if(!s.isEmpty()){
             String[] arr = s.split("=====aiYunS=====");
             jsonObjects = new JSONObject[arr.length];
             for(int i=0;i<arr.length;i++){
@@ -49,34 +50,32 @@ public class ReadTXTtoJsonObjUtil {
                 if(arr[i].endsWith("\\\"suffInfoList\\\":[]}\"}") || arr[i].endsWith("\"suffInfoList\":[]}")){
                     strObj = arr[i];
                 }else if(!arr[i].endsWith("\\\"suffInfoList\\\":[]}\"}") && arr[i].contains("\\\"suffInfoList\\\":[]}\"}")){
-                    strObj = StringEscapeUtils.unescapeJava(arr[i].substring(0,arr[i].indexOf("\\\"suffInfoList\\\":[]}\"}")+22));
+                    strObj = unescapeJava(arr[i].substring(0,arr[i].indexOf("\\\"suffInfoList\\\":[]}\"}")+22));
                 }else if(arr[i].contains("\"suffInfoList\":[]}") && !arr[i].endsWith("\"suffInfoList\":[]}")){
-                    strObj = StringEscapeUtils.unescapeJava(arr[i].substring(0,arr[i].indexOf("\"suffInfoList\":[]}")+19));
+                    strObj = unescapeJava(arr[i].substring(0,arr[i].indexOf("\"suffInfoList\":[]}")+19));
                 }else if(!arr[i].endsWith("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}") && arr[i].contains("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")){
-                    strObj = StringEscapeUtils.unescapeJava(arr[i].substring(0,arr[i].indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
+                    strObj = unescapeJava(arr[i].substring(0,arr[i].indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
                 }else if(arr[i].contains("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"") && !arr[i].endsWith("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"")){
                     strObj = arr[i] + "}";
-                    strObj = StringEscapeUtils.unescapeJava(strObj.substring(0,strObj.indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
+                    strObj = unescapeJava(strObj.substring(0,strObj.indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
                 }else if(arr[i].contains("\\\\\\\"suffInfoList\\\\\\\":[]}") && arr[i].endsWith("\\\\\\\"suffInfoList\\\\\\\":[]}")){
                     strObj = arr[i] + "\\\"}";
-                    strObj = StringEscapeUtils.unescapeJava(strObj.substring(0,strObj.indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
+                    strObj = unescapeJava(strObj.substring(0,strObj.indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
                 }else if(arr[i].contains("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"") && arr[i].endsWith("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"")){
                     strObj = arr[i] + "}";
-                    strObj = StringEscapeUtils.unescapeJava(strObj.substring(0,strObj.indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
+                    strObj = unescapeJava(strObj.substring(0,strObj.indexOf("\\\\\\\"suffInfoList\\\\\\\":[]}\\\"}")+27));
                 }else if(arr[i].contains("\\\"suffInfoList\\\":[]}") && arr[i].endsWith("\\\"suffInfoList\\\":[]}")){
                     strObj = arr[i] + "\"}";
-                    strObj = StringEscapeUtils.unescapeJava(strObj);
+                    strObj = unescapeJava(strObj);
                 }
                 if(strObj.endsWith("\\\"suffInfoList\\\":[]}\"}")){
-                    strObj = StringEscapeUtils.unescapeJava(strObj);
+                    strObj = unescapeJava(strObj);
                 }
-                if(!"".equals(strObj) && "\"}".equals(strObj.substring(strObj.length()-2,strObj.length())) && strObj.endsWith("\"suffInfoList\":[]}\"}")){
+                if("\"}".equals(strObj.substring(strObj.length() - 2, strObj.length())) && strObj.endsWith("\"suffInfoList\":[]}\"}")){
                     strObj = strObj.substring(0,strObj.length()-2);
                 }
-                if(strObj != null && !"".equals(strObj)){
-                    jsonObject = JSON.parseObject(strObj);
-                    jsonObjects[i] = jsonObject;
-                }
+                jsonObject = JSON.parseObject(strObj);
+                jsonObjects[i] = jsonObject;
             }
         }
         return jsonObjects;

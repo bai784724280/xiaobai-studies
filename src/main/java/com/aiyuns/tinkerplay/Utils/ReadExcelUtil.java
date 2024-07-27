@@ -380,7 +380,12 @@ public class ReadExcelUtil {
                     continue;
                 }
                 // 获取需要的列数据
-                t texcel = (t) t.newInstance();
+                t texcel = null;
+                try {
+                    texcel = (t) t.getDeclaredConstructor().newInstance();
+                } catch (NoSuchMethodException e) {
+                    throw new RuntimeException(e);
+                }
                 for (Map.Entry<String, Object> map : exceltoPOJO.entrySet()) {
                     // 获取Excel对应列的数据
                     String celldata = convertCellValueToString(row.getCell(Integer.parseInt(map.getKey())));
