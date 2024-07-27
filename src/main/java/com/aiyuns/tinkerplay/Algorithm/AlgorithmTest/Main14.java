@@ -45,10 +45,15 @@ public class Main14 {
         String s3 = "ab", p3 = ".*";
         String s4 = "aab", p4 = "c*a*b";
         String s5 = "mississippi", p5 = "mis*is*p*.";
-        System.out.println(isMatch(s1, p1)); // false
-        System.out.println(isMatch(s2, p2)); // true
-        System.out.println(isMatch(s3, p3)); // true
-        System.out.println(isMatch(s4, p4)); // true
-        System.out.println(isMatch(s5, p5)); // false
+        // false
+        System.out.println(isMatch(s1, p1));
+        // true
+        System.out.println(isMatch(s2, p2));
+        // true
+        System.out.println(isMatch(s3, p3));
+        // true
+        System.out.println(isMatch(s4, p4));
+        // false
+        System.out.println(isMatch(s5, p5));
     }
 }

@@ -21,6 +21,7 @@ public class TransferServiceImpl implements TransferService {
 
     @DS("slave_1")
     @Transactional
+    @Override
     public void transfer(String fromAccountNumber, String toAccountNumber, BigDecimal amount) {
         Account fromAccount = accountRepository.findByAccountNumber(fromAccountNumber)
                 .orElseThrow(() -> new IllegalArgumentException("Source account not found"));

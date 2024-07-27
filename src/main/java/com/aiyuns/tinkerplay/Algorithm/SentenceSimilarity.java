@@ -36,7 +36,8 @@ public class SentenceSimilarity {
     }
 
     private static RealVector getAverageWordVector(List<Term> terms) {
-        int dimensions = 300; // 假设词向量维度为100
+        // 假设词向量维度为100
+        int dimensions = 300;
         RealVector sumVector = new ArrayRealVector(dimensions);
         int count = 0;
         for (Term term : terms) {

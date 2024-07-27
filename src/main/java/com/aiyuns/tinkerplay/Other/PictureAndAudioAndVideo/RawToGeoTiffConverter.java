@@ -14,11 +14,11 @@ public class RawToGeoTiffConverter {
 
         String rawFilePath = "/Users/yuxinbai/Desktop/input.raw";
         String geoTiffFilePath = "/Users/yuxinbai/Desktop/output.tif";
-        String projection = "EPSG:4326"; // 替换为实际的坐标系
+        // 替换为实际的坐标系
+        String projection = "EPSG:4326";
         // 设置高斯-克吕格2000投影的Proj.4字符串
         //String proj4String = "+proj=tmerc +lat_0=0 +lon_0=120 +k=1 +x_0=500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs";
         // 替换为实际的中央经线等参数
-
         // 读取RAW文件
         Dataset rawDataset = gdal.Open(rawFilePath, gdalconstConstants.GA_ReadOnly);
         if (rawDataset == null) {

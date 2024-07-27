@@ -34,10 +34,13 @@ public class Test1 {
         }
     }
     static class B extends A{
+
         public B() {
             super(5); //1
             setValue(getValue() - 3);
         }
+
+        @Override
         public void setValue(int value){
             super.setValue(2 * value);
         }

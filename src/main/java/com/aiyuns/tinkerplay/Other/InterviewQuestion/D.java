@@ -29,6 +29,7 @@ abstract class D implements A,B,C{
     // 抽象方法
     abstract void methmod1();
     // 非抽象方法
+    @Override
     public void methmod2(){};
     // 非抽象静态方法
     static void methmod3(){}

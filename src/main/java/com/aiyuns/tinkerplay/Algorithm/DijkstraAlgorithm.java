@@ -39,7 +39,8 @@ public class DijkstraAlgorithm {
         Graph graph = new Graph(vertex, matrix);
         graph.showGraph();
         // 测试迪杰斯特拉算法
-        graph.dsj(6); // G
+        // G
+        graph.dsj(6);
         graph.showDijkstra();
     }
 }
@@ -47,7 +48,8 @@ public class DijkstraAlgorithm {
 class Graph {
     private char[] vertex;
     private int[][] matrix;
-    private VisitedVertex vv; // 已经访问过的顶点的集合
+    // 已经访问过的顶点的集合
+    private VisitedVertex vv;
 
     public Graph(char[] vertex, int[][] matrix) {
         this.vertex = vertex;
@@ -68,10 +70,13 @@ class Graph {
 
     public void dsj(int index) {
         vv = new VisitedVertex(vertex.length, index);
-        update(index); // 更新index顶点到周围顶点的距离和前驱顶点
+        // 更新index顶点到周围顶点的距离和前驱顶点
+        update(index);
         for (int j = 0; j < vertex.length; j++) {
-            index = vv.updateArr(); // 选择并返回新的访问顶点
-            update(index); // 更新index顶点到周围顶点的距离和前驱顶点
+            // 选择并返回新的访问顶点
+            index = vv.updateArr();
+            // 更新index顶点到周围顶点的距离和前驱顶点
+            update(index);
         }
     }
 
@@ -83,8 +88,10 @@ class Graph {
             len = vv.getDis(index) + matrix[index][j];
             // 如果j顶点没有被访问过，并且len小于出发顶点到j顶点的距离，就需要更新
             if (!vv.in(j) && len < vv.getDis(j)) {
-                vv.updatePre(j, index); // 更新j顶点的前驱为index顶点
-                vv.updateDis(j, len); // 更新出发顶点到j顶点的距离
+                // 更新j顶点的前驱为index顶点
+                vv.updatePre(j, index);
+                // 更新出发顶点到j顶点的距离
+                vv.updateDis(j, len);
             }
         }
     }

@@ -33,6 +33,7 @@ public class Main10 {
     public static void main(String[] args) {
         Main10 sol = new Main10();
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-        System.out.println(sol.maxArea(height)); // expected output: 49
+        // expected output: 49
+        System.out.println(sol.maxArea(height));
     }
 }

@@ -25,9 +25,11 @@ public class BinarySearchNonRecursive {
             if (arr[mid] == target) {
                 return mid;
             } else if (arr[mid] > target) {
-                right = mid - 1; // 向左找
+                // 向左找
+                right = mid - 1;
             } else {
-                left = mid + 1; // 向右找
+                // 向右找
+                left = mid + 1;
             }
         }
         return -1;

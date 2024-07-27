@@ -51,10 +51,12 @@ public class ClearAndReloadCacheAspect {
 
         Signature signature1 = proceedingJoinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature)signature1;
-        Method targetMethod = methodSignature.getMethod();//方法对象
-        ClearAndReloadCache annotation = targetMethod.getAnnotation(ClearAndReloadCache.class);//反射得到自定义注解的方法对象
-
-        String name = annotation.name();//获取自定义注解的方法对象的参数即name
+        //方法对象
+        Method targetMethod = methodSignature.getMethod();
+        //反射得到自定义注解的方法对象
+        ClearAndReloadCache annotation = targetMethod.getAnnotation(ClearAndReloadCache.class);
+        //获取自定义注解的方法对象的参数即name
+        String name = annotation.name();
 
         /**
          * 完善改造尽量根据redis缓存精确的key去精确删除
@@ -69,8 +71,10 @@ public class ClearAndReloadCacheAspect {
                 name = redisKeyUtil.redisKey(name,queryRequestVo,args);
             }
         }
-        Set<String> keys = stringRedisTemplate.keys("*" + name + "*");//模糊定义key
-        stringRedisTemplate.delete(keys);//模糊删除redis的key值,延时双删第一删
+        //模糊定义key
+        Set<String> keys = stringRedisTemplate.keys("*" + name + "*");
+        //模糊删除redis的key值,延时双删第一删
+        stringRedisTemplate.delete(keys);
         //执行加入双删注解的改动数据库的业务 即controller中的方法业务
         Object proceed = null;
         try {
@@ -86,13 +90,16 @@ public class ClearAndReloadCacheAspect {
         new Thread(() -> {
             try {
                 Thread.sleep(5000);
-                Set<String> keys1 = stringRedisTemplate.keys("*" + name2 + "*");//模糊删除
-                stringRedisTemplate.delete(keys1); // 延时双删第二删
+                //模糊删除
+                Set<String> keys1 = stringRedisTemplate.keys("*" + name2 + "*");
+                // 延时双删第二删
+                stringRedisTemplate.delete(keys1);
                 System.out.println("-----------5秒钟后，在线程中延迟删除完毕(延时双删) -----------");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }).start();
-        return proceed;//返回业务代码的值
+        //返回业务代码的值
+        return proceed;
     }
 }

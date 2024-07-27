@@ -322,7 +322,7 @@ public class FileUploadOrDownloadController {
             IOUtils.copy(is, os);
             IOUtils.closeQuietly(is);
             IOUtils.closeQuietly(os);
-            if (openStyle.equals("attachment")) {
+            if ("attachment".equals(openStyle)) {
                 userFile.setDownloadCounts(userFile.getDownloadCounts() + 1);
                 userFileService.update(userFile);
             }
@@ -334,7 +334,7 @@ public class FileUploadOrDownloadController {
                 return "连接MinIO服务器失败";
             }
             String s = MinioUtil.downloadFile(BUCKET_NAME,userFile.getFileName(),openStyle,response) != null ? "下载成功" : "下载失败";
-            if (openStyle.equals("attachment") && "下载成功".equals(s)) {
+            if ("attachment".equals(openStyle) && "下载成功".equals(s)) {
                 userFile.setDownloadCounts(userFile.getDownloadCounts() + 1);
                 userFileService.update(userFile);
             } else {

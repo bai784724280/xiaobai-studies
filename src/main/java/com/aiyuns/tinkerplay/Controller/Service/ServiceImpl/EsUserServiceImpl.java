@@ -86,6 +86,7 @@ public class EsUserServiceImpl implements EsUserService {
         return esUserRepository.save(esUser).getId();
     }
 
+    @Override
     public SearchHits<EsUser> searchAll(){
         MatchAllQueryBuilder matchAllQueryBuilder = new MatchAllQueryBuilder();
         NativeSearchQuery query = new NativeSearchQueryBuilder().withQuery(matchAllQueryBuilder).build();

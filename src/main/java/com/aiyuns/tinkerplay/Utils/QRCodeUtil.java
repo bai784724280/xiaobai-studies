@@ -33,7 +33,8 @@ public class QRCodeUtil {
             BinaryBitmap binaryBitmap = new BinaryBitmap(binarizer);
             Map<DecodeHintType, Object> hints = new HashMap<DecodeHintType, Object>();
             hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
-            Result result = new MultiFormatReader().decode(binaryBitmap, hints);//解码
+            // 解码
+            Result result = new MultiFormatReader().decode(binaryBitmap, hints);
             System.out.println("图片中内容：  ");
             System.out.println("content： " + result.getText());
             content = result.getText();
@@ -53,7 +54,8 @@ public class QRCodeUtil {
                 hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
                 //设置复杂模式开启（我使用这种方式就可以识别微信的二维码了）
                 hints.put(DecodeHintType.PURE_BARCODE,Boolean.TYPE);
-                Result result = new MultiFormatReader().decode(binaryBitmap, hints);//解码
+                // 解码
+                Result result = new MultiFormatReader().decode(binaryBitmap, hints);
                 System.out.println("图片中内容：  ");
                 System.out.println("content： " + result.getText());
                 content = result.getText();

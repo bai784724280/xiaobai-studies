@@ -43,6 +43,7 @@ public class BacktrackingAlgorithm {
         int w = 9;
         BacktrackingAlgorithm ks = new BacktrackingAlgorithm();
         int maxV = ks.knapsack(weight, value, n, w);
-        System.out.println(maxV); // 输出：18
+        // 输出：18
+        System.out.println(maxV);
     }
 }

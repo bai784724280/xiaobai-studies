@@ -361,7 +361,7 @@ public class HateSqlDemo {
                             for (int i = 0; i < columnNames.size(); i++) {
                                 if (columnNames.get(i).getColDataTypeList() != null) {
                                     stringBuilder.append(columnNames.get(i).getColDataTypeList().get(0).getColumnName());
-                                } else if (columnNames.get(i).getOperation().name().toLowerCase().equals("drop")) {
+                                } else if ("drop".equals(columnNames.get(i).getOperation().name().toLowerCase())) {
                                     if (columnNames.get(i).getColumnName() != null) {
                                         stringBuilder.append(columnNames.get(i).getColumnName());
                                     } else if (StringUtils.isNotBlank(columnNames.get(i).getIndex().getName())) {

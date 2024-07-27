@@ -90,20 +90,24 @@ public class MyAVLTree {
     public void fixAfterInsertion(AVLNode node, int type) {
         if(type == LEFT) {
             AVLNode leftChild = node.leftChild;
-            if(leftChild.leftChild != null) {  //右旋
+            // 右旋
+            if(leftChild.leftChild != null) {
                 rightRotation(node);
             }
-            else if(leftChild.rightChild != null) {   //左右旋
+            // 左右旋
+            else if(leftChild.rightChild != null) {
                 leftRotation(leftChild);
                 rightRotation(node);
             }
         }
         else if(type == RIGHT) {
             AVLNode rightChild = node.rightChild;
-            if(rightChild.rightChild != null) {   //左旋
+            // 左旋
+            if(rightChild.rightChild != null) {
                 leftRotation(node);
             }
-            else if(rightChild.leftChild != null) {   //右左旋
+            // 右左旋
+            else if(rightChild.leftChild != null) {
                 rightRotation(rightChild);
                 leftRotation(node);
             }
@@ -129,7 +133,8 @@ public class MyAVLTree {
             if(node.parent == null) {
                 this.root = leftChild;
             }
-            else if(node.parent.rightChild == node) {  // 即node节点在它原父节点的右子树中
+            // 即node节点在它原父节点的右子树中
+            else if(node.parent.rightChild == node) {
                 node.parent.rightChild = leftChild;
             }
             else if(node.parent.leftChild == node) {

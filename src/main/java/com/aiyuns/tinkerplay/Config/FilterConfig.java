@@ -16,8 +16,10 @@ public class FilterConfig {
     public FilterRegistrationBean<MyFilter> myFilterRegistrationBean() {
         FilterRegistrationBean<MyFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new MyFilter());
-        registrationBean.addUrlPatterns("/*"); // 设置过滤器的匹配路径
-        registrationBean.setOrder(1); // 设置过滤器的执行顺序，可选
+        // 设置过滤器的匹配路径
+        registrationBean.addUrlPatterns("/*");
+        // 设置过滤器的执行顺序，可选
+        registrationBean.setOrder(1);
         return registrationBean;
     }
 }

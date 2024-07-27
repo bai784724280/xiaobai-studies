@@ -30,11 +30,16 @@ public class PagingAlgorithm implements Serializable {
     /**
      * 状态量
      */
-    private int page; // 当前页码
-    private int items; // 总共项数
-    private int itemsPerPage; // 每页项数。
-    private int startRow; // 开始条数
-    private int endRow;// 结束条数
+    // 当前页码
+    private int page;
+    // 总共项数
+    private int items;
+    // 每页项数
+    private int itemsPerPage;
+    // 开始条数
+    private int startRow;
+    // 结束条数
+    private int endRow;
 
     /**
      * 创建一个分页器，初始项数为无限大<code>UNKNOWN_ITEMS</code>，默认每页显示<code>10</code>项
@@ -245,7 +250,8 @@ public class PagingAlgorithm implements Serializable {
         try {
             return super.clone();
         } catch (java.lang.CloneNotSupportedException e) {
-            return null; // 不可能发生
+            // 不可能发生
+            return null;
         }
     }
 

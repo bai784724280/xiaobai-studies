@@ -117,7 +117,8 @@ public class HttpUtil {
 
     // 判断入参是地址还是IP
     public static boolean isCorrectIp(String ipString) {
-        String ipRegex = "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}";	//IP地址的正则表达式
+        //IP地址的正则表达式
+        String ipRegex = "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}";
         //如果前三项判断都满足，就判断每段数字是否都位于0-255之间
         if (ipString.matches(ipRegex)) {
             String[] ipArray = ipString.split("\\.");
@@ -131,7 +132,8 @@ public class HttpUtil {
             return true;
         }
         else {
-            return false;	//如果与正则表达式不匹配，则返回false
+            //如果与正则表达式不匹配，则返回false
+            return false;
         }
     }
 }
