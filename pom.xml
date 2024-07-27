@@ -77,11 +77,6 @@
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-swt</artifactId>
-            <version>21.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
             <artifactId>javafx.base</artifactId>
             <version>21.0.3</version>
         </dependency>
