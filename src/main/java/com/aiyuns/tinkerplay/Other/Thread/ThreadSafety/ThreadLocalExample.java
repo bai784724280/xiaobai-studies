@@ -38,7 +38,7 @@ public class ThreadLocalExample {
             threadLocal.set(randomNumber);
 
             // 打印当前线程的 ID 和对应的 ThreadLocal 变量值
-            System.out.println("Thread ID: " + Thread.currentThread().getId() + ", ThreadLocal value: " + threadLocal.get());
+            System.out.println("Thread ID: " + Thread.currentThread().threadId() + ", ThreadLocal value: " + threadLocal.get());
 
             // 暂停一段时间
             try {
