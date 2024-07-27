@@ -13,12 +13,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import java.net.InetAddress;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 /**
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 //        System.out.println("users" + users);
 //        System.out.println("=============测试定时任务查询信息并且输出结束==============");
         System.out.println("线程: " + Thread.currentThread().getName());
-        return new AsyncResult<>(users);
+        return CompletableFuture.completedFuture(users);
     }
 
     @Override
@@ -196,8 +196,7 @@ public class UserServiceImpl implements UserService {
             }
             String[] fixedColumn = {"id", "username", "address", "sex", "birthday"};
             String[] fixedColumnName = {"序号", "姓名", "地址", "性别", "生日"};
-            RowConvertColUtil.ConvertData lists = RowConvertColUtil.doConvertReturnObj(users, "username", fixedColumn, "sex", true, fixedColumnName, "0");
-            return lists;
+            return RowConvertColUtil.doConvertReturnObj(users, "username", fixedColumn, "sex", true, fixedColumnName, "0");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -214,15 +213,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map getIPorMACaddress(HttpServletRequest request) throws Exception {
         Map<String,String> address = new HashMap<String,String>();
-        ClientMsg RequestMsg = MacUtil.getRequestMsg(request);
-        String IpAddr =  MacUtil.getIpAddr(request);
-        String addr = MacUtil.getAddress(IpAddr);
+        ClientMsg requestMsg = MacUtil.getRequestMsg(request);
+        String ipAddr =  MacUtil.getIpAddr(request);
+        String addr = MacUtil.getAddress(ipAddr);
         //String macAddress1 = MacUtil.getMACAddress(InetAddress.getByName("www.baidu.com"));
-        String macAddress2 = MacUtil.getMACAddress(InetAddress.getByName(IpAddr));
+        String macAddress2 = MacUtil.getMACAddress(InetAddress.getByName(ipAddr));
         String macAddress3 = MacUtil.getMACAddress(InetAddress.getLocalHost());
         //String macAddress4 = MacUtil.getMACAddress(InetAddress.getLoopbackAddress());
-        address.put("RequestMsg", RequestMsg.toString());
-        address.put("IpAddr", IpAddr);
+        address.put("RequestMsg", requestMsg.toString());
+        address.put("IpAddr", ipAddr);
         address.put("macAddress-getByName", macAddress2);
         address.put("macAddress-getLocalHost",macAddress3);
         return address;
@@ -241,29 +240,29 @@ public class UserServiceImpl implements UserService {
             projbaseList = new ArrayList<>(jsonObjects.length);
             projIds = new ArrayList(jsonObjects.length);
             ywhs = new ArrayList(jsonObjects.length);
-            for (int i = 0; i < jsonObjects.length; i++) {
-                if(jsonObjects[i] != null && !"".equals(jsonObjects[i])){
+            for (JSONObject jsonObject : jsonObjects) {
+                if (jsonObject != null) {
                     Projbase projbase = new Projbase();
-                    projbase.setYwh(jsonObjects[i].getString("projId"));
-                    projbase.setProjId(jsonObjects[i].getString("projId"));
-                    projbase.setJsonObj(jsonObjects[i].toJSONString());
+                    projbase.setYwh(jsonObject.getString("projId"));
+                    projbase.setProjId(jsonObject.getString("projId"));
+                    projbase.setJsonObj(jsonObject.toJSONString());
                     projbase.setCjsj(null);
-                    projbase.setMatterCode(jsonObjects[i].getString("matterCode"));
-                    projbase.setProjectName(jsonObjects[i].getString("projectName"));
-                    projbase.setGmtApply(jsonObjects[i].getString("gmtApply"));
-                    projbase.setApplyName(jsonObjects[i].getJSONObject("affFormInfo").getString("sqrname"));
-                    projbase.setApplyCardNo(jsonObjects[i].getJSONObject("affFormInfo").getString("zjh"));
+                    projbase.setMatterCode(jsonObject.getString("matterCode"));
+                    projbase.setProjectName(jsonObject.getString("projectName"));
+                    projbase.setGmtApply(jsonObject.getString("gmtApply"));
+                    projbase.setApplyName(jsonObject.getJSONObject("affFormInfo").getString("sqrname"));
+                    projbase.setApplyCardNo(jsonObject.getJSONObject("affFormInfo").getString("zjh"));
                     projbase.setBdcqzh("");
                     projbase.setBdcdjzmh("");
                     projbase.setZl("");
-                    projbase.setAreaCode(jsonObjects[i].getString("areaCode"));
+                    projbase.setAreaCode(jsonObject.getString("areaCode"));
                     projbase.setZt(666);
                     projbaseList.add(projbase);
-                    projIds.add(jsonObjects[i].getString("projId"));
+                    projIds.add(jsonObject.getString("projId"));
                 }
             }
             projId = UserDao.findByprojbase(projIds);
-            if (projId != null && projId.size() !=0 ) {
+            if (projId != null && !projId.isEmpty()) {
                 // 筛选出来已存在的ywh存放到一个list
                 for (int i = 0; i < projId.toArray().length; i++) {
                     if (projIds.contains(projId.toArray()[i])) {
@@ -271,16 +270,16 @@ public class UserServiceImpl implements UserService {
                     }
                 }
                 // projbaseList中已存在的ywh进行剔除后在推送.
-                for (int i = 0; i < ywhs.size(); i++) {
+                for (Object ywh : ywhs) {
                     for (int k = 0; k < projbaseList.size(); k++) {
-                        if (projbaseList.get(k).getProjId().equals(ywhs.get(i))) {
-                                projbaseList.remove(k);
+                        if (projbaseList.get(k).getProjId().equals(ywh)) {
+                            projbaseList.remove(k);
                         }
                     }
                 }
             }
         }
-        if(projbaseList != null && projbaseList.size() != 0){
+        if(projbaseList != null && !projbaseList.isEmpty()){
             UserDao.removeESC(projbaseList);
             //调办结接口
             StringBuffer stringBuffer = ToInterfaceUtil.interfaceUtil("https://govbdctj.zjzwfw.gov.cn:7079/api/right/ignoreOuth/house/callback/fillhousefinish",projIds.toString(),"POST");
@@ -292,7 +291,7 @@ public class UserServiceImpl implements UserService {
             resultMsg.setStackTrace(sbObj.getString("stackTrace"));
             resultMsg.setRequestId(sbObj.getString("requestId"));
             resultMsg.setSuccess(sbObj.getString("success"));
-            if(ywhs != null && ywhs.size() != 0){
+            if(!ywhs.isEmpty()){
                 resultMsg.setMessage("这些数据: " + StrSpliceUtil.strSplice(ywhs) + " 已存在projbase表中!");
             }else{
                 resultMsg.setMessage(sbObj.getString("message"));
@@ -306,7 +305,7 @@ public class UserServiceImpl implements UserService {
             resultMsg.setStackTrace("stackTrace");
             resultMsg.setRequestId("123456789");
             resultMsg.setSuccess("false");
-            if(ywhs != null && ywhs.size() != 0){
+            if(ywhs != null && !ywhs.isEmpty()){
                 resultMsg.setMessage("这些数据: " + StrSpliceUtil.strSplice(ywhs) + " 已存在projbase表中!");
             }else{
                 resultMsg.setMessage("不存在可推的数据或数据已存在projbase表中!!!");
