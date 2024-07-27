@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 /**
@@ -29,7 +30,8 @@ public class SslUtils {
         HttpURLConnection connection = null;
 
         try {
-            URL validationUrl = new URL(url);
+            URI uri = new URI(url);
+            URL validationUrl = uri.toURL();
             trustAllHttpsCertificates();
             HttpsURLConnection.setDefaultHostnameVerifier(hv);
 
