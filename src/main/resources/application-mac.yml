@@ -96,3 +96,7 @@ cdc:
 
 timedtask:
   enabled: false
+
+my:
+  ip: ${MY_ADDRESS}
+  port: ${MY_PORT}
