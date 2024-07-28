@@ -17,7 +17,8 @@
     <property name="APP_NAME" value="TinkerPlay"/>
     <!--日志文件保存路径-->
     <property name="LOG_FILE_PATH" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/logs}"/>
-    <springProperty name="myIp" source="my.ip"/>
+    <springProperty name="MY_IP" source="my.ip"/>
+    <springProperty name="MY_PORT" source="my.port"/>
     <contextName>${APP_NAME}</contextName>
     <!--每天记录日志到文件appender-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -50,7 +51,7 @@
     <!--输出到logstash的appender-->
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <!--可以访问的logstash日志收集端口-->
-        <destination>${myIp}:14560</destination>
+        <destination>${MY_IP}:${MY_PORT}</destination>
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
     <appender name="ES" class="ch.qos.logback.core.rolling.RollingFileAppender">
