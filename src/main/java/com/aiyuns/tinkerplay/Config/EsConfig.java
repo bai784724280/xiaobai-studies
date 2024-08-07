@@ -1,21 +1,26 @@
 package com.aiyuns.tinkerplay.Config;
 
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.json.JsonpMapper;
+import co.elastic.clients.json.jackson.JacksonJsonpMapper;
+import co.elastic.clients.transport.ElasticsearchTransport;
 import co.elastic.clients.transport.rest_client.RestClientOptions;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
 import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.EsUserRepository;
+import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.elasticsearch.client.ClientConfiguration;
-import org.springframework.data.elasticsearch.client.erhlc.ElasticsearchRestTemplate;
-import org.springframework.data.elasticsearch.client.erhlc.RestClients;
+import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
+import org.springframework.data.elasticsearch.core.convert.MappingElasticsearchConverter;
+import org.springframework.data.elasticsearch.core.mapping.SimpleElasticsearchMappingContext;
 import org.springframework.data.elasticsearch.repository.support.ElasticsearchRepositoryFactory;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
+
 
 /**
  * @Author: aiYunS
@@ -26,25 +31,24 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
 @EnableJpaRepositories("com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository")
 public class EsConfig {
 
-    @Value("${spring.elasticsearch.rest.uris}")
+    @Value("${elasticsearch.rest.uris}")
     private String uris;
+    @Value("${elasticsearch.rest.port}")
+    private int port;
 
     @Bean(name = "myElasticsearchClient")
-    public RestHighLevelClient myElasticsearchClient() {
-        if (uris.startsWith("http://")) {
-            uris = uris.replace("http://","");
-        }
-        final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-                // 指定Elasticsearch服务器的主机和端口
-                .connectedTo(uris)
-                .build();
-        return RestClients.create(clientConfiguration).rest();
+    public ElasticsearchClient myElasticsearchClient() {
+        // 创建低级客户端
+        RestClient restClient = RestClient.builder(new HttpHost(uris, port, "http")).build();
+        // 使用 Jackson 映射器创建传输
+        ElasticsearchTransport transport = new RestClientTransport(restClient, new JacksonJsonpMapper());
+        // 并创建 API 客户端
+        return new ElasticsearchClient(transport);
     }
 
     @Bean("elasticsearchTemplate")
-    public ElasticsearchRestTemplate elasticsearchTemplate() {
-        ElasticsearchRestTemplate elasticsearchRestTemplate = new ElasticsearchRestTemplate(myElasticsearchClient());
-        return elasticsearchRestTemplate;
+    public ElasticsearchTemplate elasticsearchTemplate() {
+        return new ElasticsearchTemplate(myElasticsearchClient());
     }
 
     @Bean("myEsUserRepository")
@@ -54,9 +58,13 @@ public class EsConfig {
     }
 
     @Bean
-    public RestClientTransport restClientTransport(RestClient restClient, JsonpMapper jsonMapper,
-                                                   ObjectProvider<RestClientOptions> restClientOptions) {
-        return new RestClientTransport(restClient, jsonMapper, restClientOptions.getIfAvailable());
+    public ElasticsearchConverter elasticsearchConverter(SimpleElasticsearchMappingContext mappingContext) {
+        return new MappingElasticsearchConverter(mappingContext);
+    }
+
+    @Bean
+    public SimpleElasticsearchMappingContext mappingContext() {
+        return new SimpleElasticsearchMappingContext();
     }
 
 }

@@ -182,9 +182,6 @@ spring:
     publisher-returns: true
     # springboot.rabbitmq.publisher-confirm 新版本已被弃用，现在使用 spring.rabbitmq.publisher-confirm-type = correlated 实现相同效果
     publisher-confirm-type: correlated
-  elasticsearch:
-    rest:
-      uris: http://192.168.1.7:9200
   # 解决springboot升级2.7.5导致的ApplicationContextException
   mvc:
     pathmatch:
@@ -206,6 +203,11 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+elasticsearch:
+  rest:
+    uris: 192.168.1.7
+    port: 9200
       
 management:
   endpoints:
