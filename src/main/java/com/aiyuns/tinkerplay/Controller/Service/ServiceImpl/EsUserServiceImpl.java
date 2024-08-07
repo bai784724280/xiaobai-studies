@@ -1,23 +1,19 @@
 package com.aiyuns.tinkerplay.Controller.Service.ServiceImpl;
 
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import com.aiyuns.tinkerplay.Controller.Service.EsUserService;
 import com.aiyuns.tinkerplay.Entity.EsUser;
 import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository.EsUserRepository;
 import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.UserDao;
 import jakarta.annotation.Resource;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.client.erhlc.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQuery;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.SearchHits;
-import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -35,13 +31,12 @@ import java.util.Optional;
 public class EsUserServiceImpl implements EsUserService {
 
     private final EsUserRepository esUserRepository;
-    private final ElasticsearchTemplate elasticsearchTemplate;
-
+    private final ElasticsearchRestTemplate elasticsearchTemplate;
     @Resource
     private UserDao userDao;
 
     @Autowired
-    public EsUserServiceImpl(EsUserRepository esUserRepository, ElasticsearchTemplate elasticsearchTemplate) {
+    public EsUserServiceImpl(EsUserRepository esUserRepository, ElasticsearchRestTemplate elasticsearchTemplate) {
         this.esUserRepository = esUserRepository;
         this.elasticsearchTemplate = elasticsearchTemplate;
     }
@@ -81,7 +76,7 @@ public class EsUserServiceImpl implements EsUserService {
 
     @Override
     public Optional<EsUser> searchById(Long id) {
-         return esUserRepository.findById(id);
+        return esUserRepository.findById(id);
     }
 
     @Override
@@ -91,8 +86,9 @@ public class EsUserServiceImpl implements EsUserService {
 
     @Override
     public SearchHits<EsUser> searchAll(){
-        Query searchQuery = Query.findAll();
-        return elasticsearchTemplate.search(searchQuery, EsUser.class);
+        MatchAllQueryBuilder matchAllQueryBuilder = new MatchAllQueryBuilder();
+        NativeSearchQuery query = new NativeSearchQueryBuilder().withQuery(matchAllQueryBuilder).build();
+        return elasticsearchTemplate.search(query, EsUser.class);
     }
 
     @Override
