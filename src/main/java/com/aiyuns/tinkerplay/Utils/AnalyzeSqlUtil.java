@@ -10,11 +10,9 @@ import net.sf.jsqlparser.statement.create.table.CreateTable;
 import net.sf.jsqlparser.statement.delete.Delete;
 import net.sf.jsqlparser.statement.drop.Drop;
 import net.sf.jsqlparser.statement.insert.Insert;
-import net.sf.jsqlparser.statement.replace.Replace;
 import net.sf.jsqlparser.statement.update.Update;
 import net.sf.jsqlparser.statement.update.UpdateSet;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -72,7 +70,7 @@ public class AnalyzeSqlUtil {
                 stringBuilder.append("更新: ");
                 stringBuilder.append(((Update) statement).getTable().getName());
                 stringBuilder.append(" 表的 ");
-                ArrayList<UpdateSet> updateSet = ((Update) statement).getUpdateSets();
+                List<UpdateSet> updateSet = ((Update) statement).getUpdateSets();
                 for (int i = 0; i < updateSet.size(); i++) {
                     stringBuilder.append(updateSet.get(i).getColumns().get(0));
                     stringBuilder.append(", ");
@@ -82,10 +80,6 @@ public class AnalyzeSqlUtil {
             } else if (statement instanceof Insert) {
                 stringBuilder.append("向表: ");
                 stringBuilder.append(((Insert) statement).getTable().getName());
-                stringBuilder.append(" 插入数据");
-            } else if (statement instanceof Replace) {
-                stringBuilder.append("使用 REPLACE INTO 向表: ");
-                stringBuilder.append(((Replace) statement).getTable().getName());
                 stringBuilder.append(" 插入数据");
             } else if (statement instanceof Delete) {
                 stringBuilder.append("删除表: ");

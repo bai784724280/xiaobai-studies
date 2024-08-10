@@ -26,8 +26,10 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
 @EnableJpaRepositories("com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.Repository")
 public class EsConfig {
 
-    @Value("${spring.elasticsearch.rest.uris}")
+    @Value("${elasticsearch.rest.uris}")
     private String uris;
+    @Value("${elasticsearch.rest.port}")
+    private String port;
 
     @Bean(name = "myElasticsearchClient")
     public RestHighLevelClient myElasticsearchClient() {
@@ -36,7 +38,7 @@ public class EsConfig {
         }
         final ClientConfiguration clientConfiguration = ClientConfiguration.builder()
                 // 指定Elasticsearch服务器的主机和端口
-                .connectedTo(uris)
+                .connectedTo(uris + ":" + port)
                 .build();
         return RestClients.create(clientConfiguration).rest();
     }

@@ -57,9 +57,9 @@ public class EsUserController {
     }
 
     @Operation(summary = "查询ES")
-    @RequestMapping(value = "/findByname", method = RequestMethod.POST)
+    @RequestMapping(value = "/findByName", method = RequestMethod.POST)
     @ResponseBody
-    List findByname(String name) {
+    List findByName(String name) {
         List<EsUser> userList = esUserService.findByName(name);
         return userList;
     }

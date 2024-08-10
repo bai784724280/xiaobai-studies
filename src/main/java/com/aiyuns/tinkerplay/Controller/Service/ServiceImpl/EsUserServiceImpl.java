@@ -31,9 +31,7 @@ import java.util.Optional;
 public class EsUserServiceImpl implements EsUserService {
 
     private final EsUserRepository esUserRepository;
-
     private final ElasticsearchRestTemplate elasticsearchTemplate;
-
     @Resource
     private UserDao userDao;
 
@@ -78,7 +76,7 @@ public class EsUserServiceImpl implements EsUserService {
 
     @Override
     public Optional<EsUser> searchById(Long id) {
-         return esUserRepository.findById(id);
+        return esUserRepository.findById(id);
     }
 
     @Override

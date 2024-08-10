@@ -41,15 +41,17 @@ spring:
   rabbitmq:
     addresses: ${my.ip}
     port: 25672
-  elasticsearch:
-    rest:
-      uris: http://${my.ip}:19200
   cloud:
     nacos:
       discovery:
         server-addr: ${my.ip}:38848
   kafka:
     bootstrap-servers: ${my.ip}:19093
+
+elasticsearch:
+  rest:
+    uris: ${my.ip}
+    port: 19200
 
 body:
   encrypt:
