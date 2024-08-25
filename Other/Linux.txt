@@ -360,3 +360,13 @@ mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.graphics
 mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.media.jar -DgroupId=org.openjfx -DartifactId=javafx.media -Dversion=21.0.3 -Dpackaging=jar
 mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.swing.jar -DgroupId=org.openjfx -DartifactId=javafx.swing -Dversion=21.0.3 -Dpackaging=jar
 mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.web.jar -DgroupId=org.openjfx -DartifactId=javafx.web -Dversion=21.0.3 -Dpackaging=jar
+
+kafka-server-start /opt/homebrew/etc/kafka/server.properties
+kafka-server-start -daemon /opt/homebrew/etc/kafka/server.properties
+zookeeper-server-start -daemon /opt/homebrew/etc/kafka/zookeeper.properties
+zookeeper-server-start /opt/homebrew/etc/kafka/zookeeper.properties
+start-cluster.sh
+
+brew services stop kafka
+brew services stop zookeeper
+stop-cluster.sh
