@@ -363,8 +363,12 @@ mvn install:install-file -Dfile=/usr/local/javafx-sdk-21.0.3/lib/javafx.web.jar 
 
 kafka-server-start /opt/homebrew/etc/kafka/server.properties
 kafka-server-start -daemon /opt/homebrew/etc/kafka/server.properties
+brew services start kafka
+
+brew services start zookeeper
 zookeeper-server-start -daemon /opt/homebrew/etc/kafka/zookeeper.properties
 zookeeper-server-start /opt/homebrew/etc/kafka/zookeeper.properties
+
 start-cluster.sh
 
 brew services stop kafka
