@@ -349,7 +349,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.31</version>
+            <version>5.8.32</version>
         </dependency>
         <!-- 文件上传 储存桶 -->
         <dependency>
