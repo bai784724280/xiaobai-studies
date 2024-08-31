@@ -15,7 +15,7 @@
     <name>tinkerplay</name>
     <description>TinkerPlay for Spring Boot</description>
     <modules>
-        <module>flink-job</module>
         <module>general</module>
+        <module>flink-job</module>
     </modules>
 </project>
