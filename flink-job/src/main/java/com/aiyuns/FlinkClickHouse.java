@@ -17,7 +17,6 @@ public class FlinkClickHouse {
             PreparedStatement preparedStatement = conn.prepareStatement("select * from test");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                // 假设表中有id和name字段
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 System.out.println("ID: " + id + ", Name: " + name);
