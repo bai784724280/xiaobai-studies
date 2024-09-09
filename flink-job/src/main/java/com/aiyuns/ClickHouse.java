@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FlinkClickHouse {
+public class ClickHouse {
 
     public static  void main(String[] args){
         DataSource dualDataSource = new BalancedClickhouseDataSource("jdbc:clickhouse://192.168.1.7:9001,127.0.0.1:9000/default");
