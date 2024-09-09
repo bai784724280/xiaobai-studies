@@ -381,4 +381,5 @@ sudo docker run -d --name clickhouse-server \
 --ulimit nofile=262144:262144 \
 -p 9001:9000 -p 8123:8123 \
 --restart unless-stopped \
-clickhouse/clickhouse-server
+
+clickhouse∆Ù∂Ø: clickhouse-server
