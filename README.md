@@ -4,7 +4,7 @@
 从系统设计规划-->编码开发-->测试调试-->规划部署-->运维支持-->程序调优-->迭代改进的一体化角度出发! 学习、温习、记录工作生活中遇到的常规性需求解决思路和案例、集成各种中间件的思路和案例、各种处理策略、算法基础、设计模式基础、测试知识点的代码库.
 
 #### 架构
-JAVA_21 + springboot_3.2.9 + mybatis_3.5.16 + redis_7.0.9 + rabbitmq_3.11.10 + ELK_7.17.3 等,maven_3.9.9构建
+JAVA_21 + springboot_3.2.10 + mybatis_3.5.16 + redis_7.0.9 + rabbitmq_3.11.10 + ELK_7.17.3 等,maven_3.9.9构建
 
 
 #### 配置文件application.yml说明
@@ -117,10 +117,17 @@ Linux:
             7. rabbitmq_v3.11.10 消息队列
             8. kafka_v2.8.1 分布式事件流平台
             9. zookeeper_v3.8.1 集中式服务
+            10. clickhouse_v24.8.4.13    数据库
+            11. mysql_v8.0.32   数据库
     普通部署:
-            10. Flink_v1.17.0 分布式处理框架
+            12. flink_v1.17.0 分布式处理框架
 Windows:
-            11. minio对象存储桶
+            13. minio对象存储桶
+            14. mysql_v8.0.11   数据库
+Mac: 
+            15. clickhouse_v24.8.4.13    数据库
+            16. mysql_v8.0.36   数据库
+            17. flink_v1.20.0 分布式处理框架
 
 #### 说明
 供小白TinkerPlay!
