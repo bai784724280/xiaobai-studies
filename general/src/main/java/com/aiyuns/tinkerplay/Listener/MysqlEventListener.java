@@ -4,7 +4,7 @@ import com.aiyuns.tinkerplay.Config.FlinkCDCConfig;
 import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.ISysJobDao;
 import com.aiyuns.tinkerplay.Entity.SysJobPO;
 import com.aiyuns.tinkerplay.Flink.DataChangeInfo;
-import com.aiyuns.tinkerplay.Flink.DataChangeSink;
+import com.aiyuns.tinkerplay.Flink.Sink.DataChangeSink;
 import com.aiyuns.tinkerplay.Flink.MysqlDeserialization;
 import com.aiyuns.tinkerplay.TimedTask.CronTaskRegistrar;
 import com.aiyuns.tinkerplay.TimedTask.SchedulingRunnable;

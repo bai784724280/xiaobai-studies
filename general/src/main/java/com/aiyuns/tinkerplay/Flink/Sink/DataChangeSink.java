@@ -1,5 +1,6 @@
-package com.aiyuns.tinkerplay.Flink;
+package com.aiyuns.tinkerplay.Flink.Sink;
 
+import com.aiyuns.tinkerplay.Flink.DataChangeInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.springframework.stereotype.Component;
