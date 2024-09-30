@@ -17,5 +17,6 @@
     <modules>
         <module>general</module>
         <module>flink-job</module>
+        <module>ai-model</module>
     </modules>
 </project>
