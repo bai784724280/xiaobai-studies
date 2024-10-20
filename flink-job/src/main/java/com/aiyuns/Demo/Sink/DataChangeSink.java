@@ -1,4 +1,4 @@
-package com.aiyuns.tinkerplay.Flink.Sink;
+package com.aiyuns.Demo.Sink;
 
 import com.aiyuns.tinkerplay.Flink.DataChangeInfo;
 import lombok.extern.slf4j.Slf4j;

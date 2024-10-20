@@ -1,4 +1,4 @@
-package com.aiyuns.tinkerplay.Flink;
+package com.aiyuns.Demo;
 
 import lombok.Data;
 

@@ -3,9 +3,6 @@ package com.aiyuns.tinkerplay.Listener;
 import com.aiyuns.tinkerplay.Config.FlinkCDCConfig;
 import com.aiyuns.tinkerplay.Controller.Service.ServiceImpl.Dao.ISysJobDao;
 import com.aiyuns.tinkerplay.Entity.SysJobPO;
-import com.aiyuns.tinkerplay.Flink.DataChangeInfo;
-import com.aiyuns.tinkerplay.Flink.Sink.DataChangeSink;
-import com.aiyuns.tinkerplay.Flink.MysqlDeserialization;
 import com.aiyuns.tinkerplay.TimedTask.CronTaskRegistrar;
 import com.aiyuns.tinkerplay.TimedTask.SchedulingRunnable;
 import com.ververica.cdc.connectors.mysql.MySqlSource;
@@ -50,11 +47,11 @@ public class MysqlEventListener implements ApplicationRunner{
     FlinkCDCConfig flinkCDCConfig;
     @Value("${timedtask.enabled}")
     private boolean timedtaskenabled = true;
-    private final DataChangeSink dataChangeSink;
+    //private final DataChangeSink dataChangeSink;
 
-    public MysqlEventListener(DataChangeSink dataChangeSink) {
-        this.dataChangeSink = dataChangeSink;
-    }
+//    public MysqlEventListener(DataChangeSink dataChangeSink) {
+//        this.dataChangeSink = dataChangeSink;
+//    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception{
@@ -62,38 +59,38 @@ public class MysqlEventListener implements ApplicationRunner{
         if (timedtaskenabled) {
             this.scanTimedTask();
         }
-        if (flinkCDCConfig.isEnabled()){
-            log.info("开始启动Flink CDC获取ERP变更数据......");
-            // 流式数据处理环境
-            StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-            // 批处理环境
-            // ExecutionEnvironment env2 = ExecutionEnvironment.getExecutionEnvironment();
-            DebeziumSourceFunction<DataChangeInfo> dataChangeInfoMySqlSource = buildDataChangeSource();
-            DataStream<DataChangeInfo> streamSource = env
-                    .addSource(dataChangeInfoMySqlSource)
-                    .name("mysql-source")
-                    .setParallelism(1);
-            streamSource.addSink(dataChangeSink);
-            env.execute("mysql-cdc");
-        }
+//        if (flinkCDCConfig.isEnabled()){
+//            log.info("开始启动Flink CDC获取ERP变更数据......");
+//            // 流式数据处理环境
+//            StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+//            // 批处理环境
+//            // ExecutionEnvironment env2 = ExecutionEnvironment.getExecutionEnvironment();
+//            DebeziumSourceFunction<DataChangeInfo> dataChangeInfoMySqlSource = buildDataChangeSource();
+//            DataStream<DataChangeInfo> streamSource = env
+//                    .addSource(dataChangeInfoMySqlSource)
+//                    .name("mysql-source")
+//                    .setParallelism(1);
+//            streamSource.addSink(dataChangeSink);
+//            env.execute("mysql-cdc");
+//        }
     }
 
     /**
      * 构造CDC数据源
      */
-    private DebeziumSourceFunction<DataChangeInfo> buildDataChangeSource() {
-        return MySqlSource.<DataChangeInfo>builder()
-                .hostname(flinkCDCConfig.getHostname())
-                .port(flinkCDCConfig.getPort())
-                .databaseList(flinkCDCConfig.getDatabase())
-                .tableList(flinkCDCConfig.getTableList())
-                .username(flinkCDCConfig.getUsername())
-                .password(flinkCDCConfig.getPassword())
-                .startupOptions(StartupOptions.latest())
-                .deserializer(new MysqlDeserialization())
-                .serverTimeZone("GMT+8")
-                .build();
-    }
+//    private DebeziumSourceFunction<DataChangeInfo> buildDataChangeSource() {
+//        return MySqlSource.<DataChangeInfo>builder()
+//                .hostname(flinkCDCConfig.getHostname())
+//                .port(flinkCDCConfig.getPort())
+//                .databaseList(flinkCDCConfig.getDatabase())
+//                .tableList(flinkCDCConfig.getTableList())
+//                .username(flinkCDCConfig.getUsername())
+//                .password(flinkCDCConfig.getPassword())
+//                .startupOptions(StartupOptions.latest())
+//                .deserializer(new MysqlDeserialization())
+//                .serverTimeZone("GMT+8")
+//                .build();
+//    }
 
     // 扫描定时任务方法
     public void scanTimedTask() {

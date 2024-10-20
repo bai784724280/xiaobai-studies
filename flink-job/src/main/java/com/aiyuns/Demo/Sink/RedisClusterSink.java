@@ -1,4 +1,4 @@
-package com.aiyuns.tinkerplay.Flink.Sink;
+package com.aiyuns.Demo.Sink;
 
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
