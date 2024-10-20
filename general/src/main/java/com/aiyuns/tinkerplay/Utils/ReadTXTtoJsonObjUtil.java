@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Objects;
 
-import static org.apache.commons.text.StringEscapeUtils.*;
+import static org.unbescape.java.JavaEscape.unescapeJava;
 
 /**
  * @Author: aiYunS
