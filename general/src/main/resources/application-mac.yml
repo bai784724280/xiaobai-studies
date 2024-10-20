@@ -86,18 +86,8 @@ nacos:
   config:
     server-addr: ${my.ip}:38848
 
-cdc:
-  datasource:
-    enabled: true
-    hostname: ${my.ip}
-    port: 23306
-    database: tinkerplay
-    tableList: user
-    username: root
-    password: ENC(dcIi+uEmTIuWfrJ1vpbk5sadABUbXpMz)
-
 timedtask:
-  enabled: false
+  enabled: true
 
 my:
   ip: ${MY_ADDRESS}
