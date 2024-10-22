@@ -32,6 +32,11 @@
         import: 只能在dependencyManagement中使用，相当于从其他pom文件中导入依赖设置
          -->
         <dependencies>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>3.5.8</version>
+            </dependency>
             <!-- nacos -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
