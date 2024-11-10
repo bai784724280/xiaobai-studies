@@ -1,4 +1,4 @@
-package com.aiyuns.tinkerplay.Other.Thread;
+package com.aiyuns.tinkerplay.Other.Thread.Lock;
 
 /**
  * @Author: aiYunS

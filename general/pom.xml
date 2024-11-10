@@ -12,9 +12,6 @@
     <artifactId>general</artifactId>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arcgis.version>200.4.0</arcgis.version>
     </properties>
 
@@ -35,6 +32,11 @@
         import: 只能在dependencyManagement中使用，相当于从其他pom文件中导入依赖设置
          -->
         <dependencies>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>3.5.9</version>
+            </dependency>
             <!-- nacos -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -303,7 +305,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.32</version>
+            <version>5.8.33</version>
         </dependency>
         <!-- 文件上传 储存桶 -->
         <dependency>
