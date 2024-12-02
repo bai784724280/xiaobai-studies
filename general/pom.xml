@@ -820,11 +820,10 @@
                                         <arg>--add-opens=java.base/java.lang=ALL-UNNAMED</arg>
                                         <arg>--add-opens=java.base/java.nio=ALL-UNNAMED</arg>
                                         <arg>--add-opens=java.base/sun.nio.ch=ALL-UNNAMED</arg>
-                                        <arg>-Xms1G</arg>
+                                        <arg>-Xms100M</arg>
                                         <arg>-Xmx2G</arg>
                                         <arg>-XX:ReservedCodeCacheSize=64m</arg>
                                         <arg>-XX:InitialCodeCacheSize=32m</arg>
-                                        <arg>-XX:+UnlockExperimentalVMOptions</arg>
                                         <arg>-XX:+UseZGC</arg>
                                         <arg>-XX:ConcGCThreads=2</arg>
                                         <arg>-XX:ParallelGCThreads=3</arg>

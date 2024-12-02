@@ -86,11 +86,10 @@ JAVA_21 + springboot_3.3.6 + mybatis_3.5.17 + redis_7.0.9 + rabbitmq_3.11.10 + E
 49. JDK20 升级到 JDK21
 50. 开启JDK21的ZGC日志记录(--add-opens
     java.base/java.util=ALL-UNNAMED
-    -Xms1G
+    -Xms100M
     -Xmx2G
     -XX:ReservedCodeCacheSize=64m
     -XX:InitialCodeCacheSize=32m
-    -XX:+UnlockExperimentalVMOptions
     -XX:+UseZGC
     -XX:ConcGCThreads=2
     -XX:ParallelGCThreads=3
