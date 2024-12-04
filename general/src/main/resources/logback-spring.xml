@@ -8,23 +8,23 @@
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-<!--            <pattern>%d %p (%file:%line\)- %m%n</pattern>-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+            <pattern>%d %p (%file:%line\)- %m%n</pattern>
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>-->
             <charset>UTF-8</charset>
         </encoder>
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-<!--            <fileNamePattern>./logs/${APP_NAME}/%d/${APP_NAME}-all.%d.%i.log</fileNamePattern>-->
-            <fileNamePattern>${LOG_FILE_PATH}/${APP_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>./logs/${APP_NAME}/%d/${APP_NAME}-all.%d.%i.log</fileNamePattern>
+<!--            <fileNamePattern>${LOG_FILE_PATH}/${APP_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
             <maxFileSize>1MB</maxFileSize>
             <maxHistory>7</maxHistory>
             <totalSizeCap>10MB</totalSizeCap>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-<!--            <pattern>%date{yyyy-MM-dd HH:mm:ss:SSS}|%-5level|%thread|%method:%line|%logger|%msg%n</pattern>-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss:SSS}|%-5level|%thread|%method:%line|%logger|%msg%n</pattern>
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>-->
             <charset>UTF-8</charset>
         </encoder>
     </appender>
@@ -63,7 +63,6 @@
     <root>
         <level value="INFO" />
         <appender-ref ref="CONSOLE" />
-        <appender-ref ref="FILE" />
         <appender-ref ref="LOGSTASH"/>
     </root>
 
