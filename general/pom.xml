@@ -12,7 +12,7 @@
     <artifactId>general</artifactId>
 
     <properties>
-        <arcgis.version>200.4.0</arcgis.version>
+        <arcgis.version>200.6.0</arcgis.version>
     </properties>
 
     <repositories>
